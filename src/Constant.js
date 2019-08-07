@@ -4,7 +4,6 @@ import {Platform, Dimensions} from 'react-native';
 export const {height, width, scale} = Dimensions.get('window');
 import {NativeConstant} from 'rn-curiosity';
 
-
 export const FontSize = { //默认大小 14
     textSize_7: 7,
     textSize_8: 8,
@@ -117,7 +116,8 @@ export const Constant = {
     Screen_Width: width,
     // 获取屏幕分辨率
     Screen_Scale: scale,
-
+    //状态栏高度
+    CurrentHeight: NativeConstant.StatusBarHeight,
     //阴影效果
     ShadowStyle: {
         shadowColor: '#000',//ios阴影颜色
@@ -126,8 +126,7 @@ export const Constant = {
         shadowOpacity: 0.2,//ios阴影透明的
         elevation: 6,//android阴影范围
     },
-    //状态栏高度
-    CurrentHeight: NativeConstant.StatusBarHeight,
+
 };
 
 

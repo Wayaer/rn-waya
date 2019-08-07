@@ -1,6 +1,6 @@
 {
   "name": "wayae",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React Native wayae",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/wayae",
@@ -11,12 +11,8 @@
     "androidBundle": "react-native bundle --platform android --entry-file index.js --reset-cache --bundle-output android/bundle/index.bundle --dev false --assets-dest android/bundle/",
     "iosBundle": "react-native bundle --platform ios --entry-file index.js --reset-cache --bundle-output ios/bundle/index.bundle --dev false --assets-dest ios/bundle/",
     "npmPublish": "npm publish",
-    "npmUnPublish": "npm unpublish wayae@0.0.3",
+    "npmUnPublish": "npm unpublish wayae@0.0.4",
     "npmDeprecate": "npm deprecate wayae@0.0.0 Please update the version for wayae"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Wayaer/wayae"
   },
   "keywords": [
     "react-native"
