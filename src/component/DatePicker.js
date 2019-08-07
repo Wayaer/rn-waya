@@ -1,8 +1,8 @@
 'use strict';
 import React, {PureComponent} from 'react';
 import {Wheel} from 'teaset';
-import {CustomButton, CenterView, TouchView} from '../BaseComponent';
-import {Colors, Constant, FontSize} from '../BaseConstant';
+import {CustomButton, CenterView, TouchView} from '../Component';
+import {Colors, Constant, FontSize} from '../Constant';
 import Utils from '../Utils';
 
 export class DatePicker extends PureComponent {

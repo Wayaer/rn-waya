@@ -1,7 +1,7 @@
 'use strict';
 import React, {PureComponent} from 'react';
 import {processColor, Platform, StyleSheet, View, requireNativeComponent} from 'react-native';
-import {TouchView} from '../BaseComponent';
+import {TouchView} from '../Component';
 
 const NativeLinearGradient = requireNativeComponent('LinearGradient', null);
 const convertPoint = (name, point) => {
