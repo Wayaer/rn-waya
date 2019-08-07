@@ -1,6 +1,6 @@
 {
   "name": "wayae",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React Native wayae",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/wayae",
@@ -11,7 +11,7 @@
     "androidBundle": "react-native bundle --platform android --entry-file index.js --reset-cache --bundle-output android/bundle/index.bundle --dev false --assets-dest android/bundle/",
     "iosBundle": "react-native bundle --platform ios --entry-file index.js --reset-cache --bundle-output ios/bundle/index.bundle --dev false --assets-dest ios/bundle/",
     "npmPublish": "npm publish",
-    "npmUnPublish": "npm unpublish wayae@0.0.4",
+    "npmUnPublish": "npm unpublish wayae@0.0.5",
     "npmDeprecate": "npm deprecate wayae@0.0.0 Please update the version for wayae"
   },
   "keywords": [
@@ -20,7 +20,8 @@
   "dependencies": {
     "eslint": "^6.1.0",
     "prop-types": "latest",
-    "rn-curiosity": "latest"
+    "rn-curiosity": "latest",
+    "teaset": "0.6.3"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5"
