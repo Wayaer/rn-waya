@@ -1,5 +1,5 @@
-# 必须加入的库
-
+# 全功能版本的的wayae必须依赖以下库
+*本库仅供个人使用，用于封装基础方法和组件，他人使用若有问题自行负责
 ```
   yarn add rn-fetch-blob
          
@@ -10,13 +10,8 @@
   yarn add @react-native-community/netinfo 
 ```
 
-```
 
-  import {TouchView, Utils, View, React, Component} from "rn-curiosity";
-
-```
 #组件
-
    
 Checkbox
 ```html
