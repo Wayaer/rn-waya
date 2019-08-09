@@ -1,7 +1,7 @@
 'use strict';
 import {
     DatePicker, React,
-    height, scale, width, ModalIndicator, Overlay, Toast,
+    ModalIndicator, Overlay, Toast,
     AsyncStorage, NetInfo,
 } from '../index';
 import Storage from './component/Storage';
@@ -10,6 +10,8 @@ import {NavigationActions, StackActions} from 'react-navigation';
 import {Platform, DeviceEventEmitter, BackHandler, ToastAndroid} from 'react-native';
 import {FetchBlob} from './FetchBlob';
 
+const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
+    width = NativeConstant.Screen_Width
 const alertStyle = {height: height, width: width};
 let storage;
 
@@ -532,7 +534,8 @@ export default class Utils {
      * @returns {number} 返回全面屏对应的16：9 屏幕高度
      */
     static phoneFitHeight() {
-        const s = scale, h = height, y = scale * height;
+        const s = scale, h = height,
+            y = scale * height;
         if (Platform.OS === 'android') {
             if (y < 1000) { //720p以下手机
                 return h;
@@ -589,7 +592,7 @@ export default class Utils {
      * @returns {number}
      */
     static getActualHeight(h) {
-        return (h / 1334) * height;
+        return (h / 1334) * width;
     }
 
     /**

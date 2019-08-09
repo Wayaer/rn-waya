@@ -1,8 +1,9 @@
 'use strict';
-import {Platform, Dimensions} from 'react-native';
-
-export const {height, width, scale} = Dimensions.get('window');
+import {Platform} from 'react-native';
 import {NativeConstant} from 'rn-curiosity';
+
+const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
+    width = NativeConstant.Screen_Width
 
 export const FontSize = { //默认大小 14
     textSize_7: 7,
