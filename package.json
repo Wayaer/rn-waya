@@ -1,9 +1,9 @@
 {
-  "name": "wayae",
+  "name": "rn-waya",
   "version": "0.0.7",
-  "description": "React Native wayae",
+  "description": "React Native rn-waya",
   "main": "index.js",
-  "homepage": "https://github.com/Wayaer/wayae",
+  "homepage": "https://github.com/Wayaer/rn-waya",
   "license": "license",
   "author": "Wayaer",
   "scripts": {
