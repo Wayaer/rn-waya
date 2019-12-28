@@ -62,6 +62,7 @@ export * from './src/component/PickerView';
 export * from './src/component/SimpleChooseDialog';
 export * from './src/component/SimpleItemsDialog';
 export * from './src/component/ToastComponent';
+export * from './src/component/LazyImage';
 
 export {
     Theme,
