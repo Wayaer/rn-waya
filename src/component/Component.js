@@ -1,11 +1,8 @@
 'use strict';
 import React, {PureComponent} from 'react';
-import {
-    Text, Image, View,
-    ImageBackground, TouchableOpacity,
-} from 'react-native';
-import {Constant} from './Constant';
-import Utils from './Utils';
+import {Image, ImageBackground, Text, TouchableOpacity, View,} from 'react-native';
+import {Constant} from '../constant/Constant';
+import Utils from '../utils/Utils';
 
 /**
  * 自定义 点击按钮
@@ -170,7 +167,7 @@ export class CustomCheckbox extends PureComponent {
                     });
                 }}>
                 <CustomImage
-                    require={this.state.checked ? (this.checkedIcon || require('./icons/checkbox_true.png')) : (this.uncheckedIcon || require('./icons/checkbox_false.png'))}
+                    require={this.state.checked ? (this.checkedIcon || require('../icons/checkbox_true.png')) : (this.uncheckedIcon || require('../icons/checkbox_false.png'))}
                     style={[{
                         width: Utils.getWidth(30),
                         height: Utils.getWidth(30),

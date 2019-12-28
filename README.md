@@ -125,7 +125,7 @@ onCancel   取消 回调
 
 
 #方法 Utils
-[参考Utils文件](src/Utils.js)
+[参考Utils文件](src/utils/Utils.js)
 
 ```
   使用方法
@@ -151,7 +151,7 @@ onCancel   取消 回调
   Utils.downloadBundleZipWithUnZip()  //bundle 下载和解压，具体的版本校验自行判断
 
 ```
-[参考Utils文件uploadBundle方法和downloadBundleZipWithUnZip方法](src/Utils.js)
+[参考Utils文件uploadBundle方法和downloadBundleZipWithUnZip方法](src/utils/Utils.js)
 ```
     /**
      * 此方法包含 校验bundle版本号匹配问题已经下载和解压

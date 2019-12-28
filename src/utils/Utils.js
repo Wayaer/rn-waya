@@ -1,13 +1,9 @@
 'use strict';
-import {
-    DatePicker, React,
-    ModalIndicator, Overlay, Toast,
-    AsyncStorage, NetInfo,
-} from '../index';
-import Storage from './component/Storage';
-import {NativeUtils, NativeConstant} from 'rn-curiosity';
+import {AsyncStorage, DatePicker, ModalIndicator, NetInfo, Overlay, React, Toast} from '../../index';
+import Storage from './Storage';
+import {NativeConstant, NativeUtils} from 'rn-curiosity';
 import {NavigationActions, StackActions} from 'react-navigation';
-import {Platform, DeviceEventEmitter, BackHandler, ToastAndroid} from 'react-native';
+import {BackHandler, DeviceEventEmitter, Platform, ToastAndroid} from 'react-native';
 import {FetchBlob} from './FetchBlob';
 
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
@@ -371,9 +367,7 @@ export default class Utils {
      */
     static jumpCallbackView(self, routeName, callback) {
         self.props.navigation.navigate(routeName, {
-            callback: (data) => {
-                return callback(data);
-            },
+            callback: callback,
         });
     }
 
@@ -387,9 +381,7 @@ export default class Utils {
     static jumpDataCallbackView(self, routeName, data, callback) {
         self.props.navigation.navigate(routeName, {
             data,
-            callback: (data) => {
-                return callback(data);
-            },
+            callback: callback,
         });
     }
 
@@ -427,9 +419,7 @@ export default class Utils {
      */
     static pushCallbackView(self, routeName, callback) {
         self.props.navigation.push(routeName, {
-            callback: (data) => {
-                return callback(data);
-            },
+            callback: callback,
         });
     }
 
@@ -443,9 +433,7 @@ export default class Utils {
     static pushDataCallbackView(self, routeName, data, callback) {
         self.props.navigation.push(routeName, {
             data,
-            callback: (data) => {
-                return callback(data);
-            },
+            callback: callback,
         });
     }
 
@@ -513,9 +501,8 @@ export default class Utils {
                 return false;
             } else if (y > 2560 && y < 3300) {//2k 18:9  19.5:9
                 return true;
-            } else {
-                return false;
             }
+            return false;
         } else if (Platform.OS === 'ios') {
             if (y < 1400) {//4.7寸 16:9
                 return false;
@@ -526,6 +513,7 @@ export default class Utils {
             } else if (y > 2300) {//iphone x  18:9
                 return true;
             }
+            return false;
         }
     }
 
@@ -1062,5 +1050,8 @@ export default class Utils {
         }
     }
 
+    static getDaysInOneMonth(year, month) {
+        return new Date(year, month, 0).getDate();
+    }
 
 }

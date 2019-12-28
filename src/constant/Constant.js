@@ -104,6 +104,21 @@ export class Fit {
 
 }
 
+// 下载地图app地址
+export const DownloadUrl = {
+    android: {
+        GaoDe: "http://mobile.amap.com",
+        BaiDu: "http://map.baidu.com",
+        TengXun: `https://pr.map.qq.com/j/tmap/download?key=${tmapKey}`
+    },
+    ios: {
+        GaoDe:
+            "https://itunes.apple.com/cn/app/gao-tu-zhuan-ye-shou-ji-tu/id461703208?mt=8",
+        BaiDu:
+            "https://itunes.apple.com/cn/app/bai-du-tu-shou-ji-tu-lu-xian/id452186370?mt=8",
+        TengXun: `https://pr.map.qq.com/j/tmap/download?key=${tmapKey}`
+    }
+};
 
 export const Constant = {
 

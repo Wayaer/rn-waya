@@ -1,69 +1,74 @@
 'use strict';
 import React, {Component, PureComponent} from 'react';
-import Utils from './src/Utils';
-
+import Utils from './src/utils/Utils';
 //第三方
 import RNFetchBlob from 'rn-fetch-blob';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {
-    Theme,
-
-    Label,
-    // Button,
-    // Checkbox,
-    Input,
-    Select,
-    Stepper,
-    SearchInput,
+    ActionPopover,
+    ActionSheet,
+    AlbumView,
     Badge,
-    Popover,
-
-    NavigationBar,
-    ListRow,
+    BasePage,
     Carousel,
+    Drawer,
+    Input,
+    KeyboardSpace,
+    Label,
+    ListRow,
+    Menu,
+    ModalIndicator,
+    NavigationBar,
+    NavigationPage,
+    Overlay,
+    Popover,
+    PopoverPicker,
     Projector,
+    PullPicker,
+    SearchInput,
     SegmentedBar,
     SegmentedView,
+    Select,
+    Stepper,
     TabView,
-    TransformView,
-    AlbumView,
-    Wheel,
-
-    TopView,
-    Overlay,
-    Toast,
-    ActionSheet,
-    ActionPopover,
-    PullPicker,
-    PopoverPicker,
-    Menu,
-    Drawer,
-    ModalIndicator,
-
     TeaNavigator,
-    BasePage,
-    NavigationPage,
-
-    KeyboardSpace,
+    Theme,
+    Toast,
+    TopView,
+    TransformView,
+    Wheel,
 } from 'teaset';
 
 export * from 'rn-curiosity';
 export * from 'react-native';
-export * from './src/FetchBlob';
-export * from './src/Component';
-export * from './src/Constant';
+export * from './src/utils/FetchBlob';
+export * from './src/component/Component';
+export * from './src/constant/Constant';
 export * from './src/component/Bar';
 export * from './src/component/DatePicker';
 export * from './src/component/LinearGradient';
+export * from './src/component/AlertDialog';
+export * from './src/component/AreaPicker';
+export * from './src/component/BaseComponent';
+export * from './src/component/BaseDialog';
+export * from './src/component/CustomPicker';
+export * from './src/component/DateTimePicker';
+export * from './src/component/DownloadDialog';
+export * from './src/component/InputDialog';
+export * from './src/component/KeyboardSpacer';
+export * from './src/component/PickerView';
+export * from './src/component/SimpleChooseDialog';
+export * from './src/component/SimpleItemsDialog';
+export * from './src/component/ToastComponent';
 
 export {
     Theme,
 
     Label,
     // Button,
-    //Checkbox,
+    //     //Checkbox,
     Input,
     Select,
     Stepper,
