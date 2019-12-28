@@ -3,8 +3,10 @@ import {AsyncStorage, DatePicker, ModalIndicator, NetInfo, Overlay, React, Toast
 import Storage from './Storage';
 import {NativeConstant, NativeUtils} from 'rn-curiosity';
 import {NavigationActions, StackActions} from 'react-navigation';
-import {BackHandler, DeviceEventEmitter, Platform, ToastAndroid} from 'react-native';
+import {BackHandler, DeviceEventEmitter, FlatList, Platform, ToastAndroid} from 'react-native';
 import {FetchBlob} from './FetchBlob';
+import {CenterView, CustomButton} from '../component/Component';
+import {FontSize as TextSize} from "../constant/Constant";
 
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
     width = NativeConstant.Screen_Width
@@ -713,6 +715,38 @@ export default class Utils {
                 paddingCorner={style && style.paddingCorner || 0}
                 mmodal={style && style.modal || false}
                 style={[alertStyle, {justifyContent: 'flex-end'}, style && style]}>{view}</Overlay.PopoverView>);
+    }
+
+    static pullListView(stringList, titleText, cancelText, callback) {
+        let listView = Utils.alertPullView(<CenterView>
+            <CustomButton textStyle={{
+                margin: 20,
+                fontSize: TextSize.textSize_16
+            }}>{titleText}</CustomButton>
+            <FlatList
+                keyExtractor={(item, index) => (index + '1')}
+                data={this.state.item}
+
+                renderItem={({item, index}) => (
+                    <CustomButton textStyle={{
+                        margin: Utils.getWidth(25)
+                    }} onPress={() => {
+                        Overlay.hide(listView);
+                        return callback && callback(index)
+                    }}>{item}</CustomButton>
+
+                )}
+            />
+            <CustomButton
+                textStyle={{
+                    margin: 20,
+                }}
+                onPress={() => {
+                    Overlay.hide(listView);
+                    return callback && callback('cancel')
+                }}
+            >{cancelText}</CustomButton>
+        </CenterView>)
     }
 
     /**

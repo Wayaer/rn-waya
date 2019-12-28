@@ -1,6 +1,6 @@
 'use strict';
 import React, {PureComponent} from 'react';
-import {Image, ImageBackground, Text, TouchableOpacity, View,} from 'react-native';
+import {Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import {Constant} from '../constant/Constant';
 import Utils from '../utils/Utils';
 

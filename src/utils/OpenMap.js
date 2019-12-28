@@ -1,10 +1,24 @@
 import {Linking, Platform} from "react-native";
-import {Utils,DownloadUrl} from '../../index';
+import {Utils} from '../../index';
 
 // 腾讯地图开发者key
 let tmapKey = "";
 
-
+// 下载地图app地址
+const downloadUrl = {
+    android: {
+        GaoDe: "http://mobile.amap.com",
+        BaiDu: "http://map.baidu.com",
+        TengXun: `https://pr.map.qq.com/j/tmap/download?key=${tmapKey}`
+    },
+    ios: {
+        GaoDe:
+            "https://itunes.apple.com/cn/app/gao-tu-zhuan-ye-shou-ji-tu/id461703208?mt=8",
+        BaiDu:
+            "https://itunes.apple.com/cn/app/bai-du-tu-shou-ji-tu-lu-xian/id452186370?mt=8",
+        TengXun: `https://pr.map.qq.com/j/tmap/download?key=${tmapKey}`
+    }
+};
 // 第三方地图应用Url
 const openUrl = ({startLocation, destLocation, mode, type, appName}) => {
     // 高德地图参数配置
@@ -109,57 +123,39 @@ const openUrl = ({startLocation, destLocation, mode, type, appName}) => {
  * 系统内没有任何第三方地图应用，提示推荐下载列表
  */
 const downloadTip = () => {
-
-    Utils.alertPullView()
-    showActionSheetWithOptions(
-        {
-            title: "未安装任何第三方地图应用，请选择其中一个应用",
-            options: ["取消", "高德地图", "百度地图", "腾讯地图"],
-            cancelButtonIndex: 0
-        },
-        buttonIndex => {
-            const {GaoDe, BaiDu, TengXun} = DownloadUrl[Platform.OS];
-            let url = 0;
-            switch (buttonIndex) {
-                case 1:
-                    url = GaoDe;
-                    break;
-                case 2:
-                    url = BaiDu;
-                    break;
-                case 3:
-                    url = TengXun;
-                    break;
-                default:
-                    url = GaoDe;
-            }
-            Linking.canOpenURL(url).then(result => {
-                if (result) {
-                    Linking.openURL(url);
-                }
-            });
+    Utils.pullListView(["高德地图", "百度地图", "腾讯地图"], '未安装任何第三方地图应用，请选择其中一个应用', '取消', (index) => {
+        const {GaoDe, BaiDu, TengXun} = downloadUrl[Platform.OS];
+        let url = 0;
+        switch (index + 1) {
+            case 1:
+                url = GaoDe;
+                break;
+            case 2:
+                url = BaiDu;
+                break;
+            case 3:
+                url = TengXun;
+                break;
+            default:
+                url = GaoDe;
         }
-    );
+        Linking.canOpenURL(url).then(result => {
+            if (result) {
+                Linking.openURL(url);
+            }
+        });
+    })
 };
 
 /**
  * 显示已经存在的第三方地图应用
  */
 const showExistApp = maps => {
-    const obj = Platform.OS === "android" ? ActionSheet : ActionSheetIOS;
-    const options = ["取消", ...maps.map(item => item[0])];
-    obj.showActionSheetWithOptions(
-        {
-            title: "请选择其中一个地图应用",
-            options,
-            cancelButtonIndex: 0
-        },
-        buttonIndex => {
-            if (buttonIndex !== 0) {
-                Linking.openURL(maps[buttonIndex - 1][1]);
-            }
-        }
-    );
+    const options = [...maps.map(item => item[0])];
+    Utils.pullListView(options, '请选择其中一个地图应用', '取消', (index) => {
+        Linking.openURL(maps[index][1]);
+    })
+
 };
 
 /**
@@ -199,10 +195,8 @@ const init = ({tmapKey: refererKey = ""}) => {
     tmapKey = refererKey;
 };
 
-const MapLinking = () => {
+const OpenMaP = () => {
 };
 
-MapLinking.planRoute = planRoute;
-MapLinking.init = init;
-
-export default MapLinking;
+OpenMaP.planRoute = planRoute;
+OpenMaP.init = init;
