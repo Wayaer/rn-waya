@@ -1,6 +1,5 @@
 'use strict';
 import React, {Component, PureComponent} from 'react';
-import Utils from './src/utils/Utils';
 //第三方
 import RNFetchBlob from 'rn-fetch-blob';
 import NetInfo from '@react-native-community/netinfo';
@@ -41,27 +40,9 @@ import {
     Wheel,
 } from 'teaset';
 
+export * from './src/';
 export * from 'rn-curiosity';
 export * from 'react-native';
-export * from './src/utils/FetchBlob';
-export * from './src/component/Component';
-export * from './src/constant/Constant';
-export * from './src/component/Bar';
-export * from './src/component/DatePicker';
-export * from './src/component/LinearGradient';
-export * from './src/component/AlertDialog';
-export * from './src/component/AreaPicker';
-export * from './src/component/BaseComponent';
-export * from './src/component/BaseDialog';
-export * from './src/component/CustomPicker';
-export * from './src/component/DateTimePicker';
-export * from './src/component/DownloadDialog';
-export * from './src/component/InputDialog';
-export * from './src/component/KeyboardSpacer';
-export * from './src/component/PickerView';
-export * from './src/component/SimpleChooseDialog';
-export * from './src/component/SimpleItemsDialog';
-export * from './src/component/ToastComponent';
 
 export {
     Theme,
@@ -107,6 +88,5 @@ export {
     React,
     Component, PureComponent,
     NetInfo, AsyncStorage,
-    Utils,
     RNFetchBlob,
 };
