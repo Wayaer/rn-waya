@@ -4,7 +4,7 @@ import React, {Component, PureComponent} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import Utils from './src/utils/Utils';
 import {
     ActionPopover,
     ActionSheet,
@@ -40,7 +40,7 @@ import {
     Wheel,
 } from 'teaset';
 
-export * from './src/utils/Utils';
+
 export * from 'rn-curiosity';
 export * from 'react-native';
 export * from './src/utils/FetchBlob';
@@ -107,5 +107,5 @@ export {
     React,
     Component, PureComponent,
     NetInfo, AsyncStorage,
-    RNFetchBlob,
+    RNFetchBlob, Utils,
 };
