@@ -1,12 +1,10 @@
 'use strict';
-import {AsyncStorage, DatePicker, ModalIndicator, NetInfo, Overlay, React, Toast} from '../../index';
+import {AsyncStorage, DatePicker, FontSize, ModalIndicator, NetInfo, Overlay, React, Toast} from '../../index';
 import Storage from './Storage';
 import {NativeConstant, NativeUtils} from 'rn-curiosity';
-import {NavigationActions, StackActions} from 'react-navigation';
 import {BackHandler, DeviceEventEmitter, FlatList, Platform, ToastAndroid} from 'react-native';
 import {FetchBlob} from './FetchBlob';
 import {CenterView, CustomButton} from '../component/Component';
-import {FontSize as TextSize} from "../constant/Constant";
 
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
     width = NativeConstant.Screen_Width
@@ -328,18 +326,12 @@ export default class Utils {
     }
 
     /**
-     * 重置堆栈，并初始化到指定页面
+     * 新路由替换当前路由
      * @param self
      * @param routeName
      */
-    static goToResetView(self, routeName) {
-        const resetAction = StackActions.reset({
-            index: 0,
-            actions: [
-                NavigationActions.navigate({routeName: routeName}),
-            ],
-        });
-        self.props.navigation.dispatch(resetAction);
+    static replaceView(self, routeName) {
+        self.props.replace(routeName);
     }
 
     /**
@@ -437,21 +429,6 @@ export default class Utils {
             data,
             callback: callback,
         });
-    }
-
-
-    // DrawerNavigator
-
-    static openDrawer() {
-
-    }
-
-    static closeDrawer() {
-
-    }
-
-    static toggleDrawer() {
-
     }
 
 
@@ -721,7 +698,7 @@ export default class Utils {
         let listView = Utils.alertPullView(<CenterView>
             <CustomButton textStyle={{
                 margin: 20,
-                fontSize: TextSize.textSize_16
+                fontSize: FontSize.textSize_16
             }}>{titleText}</CustomButton>
             <FlatList
                 keyExtractor={(item, index) => (index + '1')}

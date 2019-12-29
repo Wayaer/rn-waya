@@ -54,7 +54,7 @@ export * from './src/component/AreaPicker';
 export * from './src/component/BaseComponent';
 export * from './src/component/BaseDialog';
 export * from './src/component/CustomPicker';
-// export * from './src/component/DateTimePicker';
+export * from './src/component/DateTimePicker';
 export * from './src/component/DownloadDialog';
 export * from './src/component/InputDialog';
 export * from './src/component/KeyboardSpacer';
