@@ -2,7 +2,6 @@
 import React, {Component, PureComponent} from 'react';
 //第三方
 import RNFetchBlob from 'rn-fetch-blob';
-import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-community/async-storage';
 import Utils from './src/utils/Utils';
 import {
@@ -107,6 +106,6 @@ export {
     /* curiosity */
     React,
     Component, PureComponent,
-    NetInfo, AsyncStorage,
+    AsyncStorage,
     RNFetchBlob, Utils,
 };

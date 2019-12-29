@@ -319,7 +319,7 @@ export default class Utils {
      * @param routeName
      */
     static replaceView(self, routeName) {
-        self.props.replace(routeName);
+        self.props.navigation.replace(routeName);
     }
 
     /**
@@ -931,7 +931,7 @@ export default class Utils {
                         bundleUnZip && bundleUnZip();
                     });
                 } else if ((netVersion.iosVersion) === localVersionCode && (netVersion.iosBundleVersion) < localIosBundleVersion) {
-                    this.deleteBundle();
+                    Utils.deleteBundle();
                 }
             }
         } else {
