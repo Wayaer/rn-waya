@@ -8,7 +8,7 @@ import {BaseDialog} from './BaseDialog';
 import Utils from '../utils/Utils';
 
 
-export class DatePicker extends BaseDialog {
+export class DateTimePicker extends BaseDialog {
     static defaultProps = {
         removeSubviews: false,
         itemTextColor: 0x333333ff,
