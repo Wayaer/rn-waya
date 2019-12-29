@@ -42,7 +42,7 @@ export default class Storage {
         }
 
         this._mapPromise = this.getItem('map').then(map => {
-            this._m = this._checkMap(map && JSON.parse(map) || {});
+            this._m = this.checkMap(map && JSON.parse(map) || {});
             // delete this._mapPromise;
         });
     }
@@ -59,7 +59,7 @@ export default class Storage {
         return this._s ? this.isPromise ? this._s.removeItem(key) : Promise.resolve(this._s.removeItem(key)) : Promise.resolve();
     }
 
-    _initMap() {
+    initMap() {
         return {
             innerVersion: this._innerVersion,
             index: 0,
@@ -67,21 +67,21 @@ export default class Storage {
         };
     }
 
-    _checkMap(map) {
+    checkMap(map) {
         if (map && map.innerVersion && map.innerVersion === this._innerVersion) {
             return map;
         } else {
-            return this._initMap();
+            return this.initMap();
         }
     }
 
-    _getId(key, id) {
+    getId(key, id) {
         return key + '_' + id;
     }
 
-    _saveToMap(params) {
+    saveToMap(params) {
         let {key, id, data} = params,
-            newId = this._getId(key, id),
+            newId = this.getId(key, id),
             m = this._m;
         if (m[newId] !== undefined) {
             //update existed data
@@ -95,7 +95,7 @@ export default class Storage {
             let oldId = m[m.index];
             let splitOldId = oldId.split('_');
             delete m[oldId];
-            this._removeIdInKey(splitOldId[0], splitOldId[1]);
+            this.removeIdInKey(splitOldId[0], splitOldId[1]);
             if (this.enableCache) {
                 delete this.cache[oldId];
             }
@@ -146,7 +146,7 @@ export default class Storage {
             if (id.toString().indexOf('_') !== -1) {
                 console.error('Please do not use "_" in id!');
             }
-            return this._mapPromise.then(() => this._saveToMap({
+            return this._mapPromise.then(() => this.saveToMap({
                 key,
                 id,
                 data: dataToSave,
@@ -186,17 +186,17 @@ export default class Storage {
         });
     }
 
-    _lookupGlobalItem(params) {
+    lookupGlobalItem(params) {
         let ret;
         let {key} = params;
         if (this.enableCache && this.cache[key] !== undefined) {
             ret = this.cache[key];
-            return this._loadGlobalItem({ret, ...params});
+            return this.loadGlobalItem({ret, ...params});
         }
-        return this.getItem(key).then(ret => this._loadGlobalItem({ret, ...params}));
+        return this.getItem(key).then(ret => this.loadGlobalItem({ret, ...params}));
     }
 
-    _loadGlobalItem(params) {
+    loadGlobalItem(params) {
         let {key, ret, autoSync, syncInBackground, syncParams} = params;
         if (ret === null || ret === undefined) {
             if (autoSync && this.sync[key]) {
@@ -224,7 +224,7 @@ export default class Storage {
         return Promise.resolve(ret.rawData);
     }
 
-    _noItemFound(params) {
+    noItemFound(params) {
         let {key, id, autoSync, syncParams} = params;
         if (this.sync[key]) {
             if (autoSync) {
@@ -235,15 +235,15 @@ export default class Storage {
         return Promise.reject(new NotFoundError(JSON.stringify(params)));
     }
 
-    _loadMapItem(params) {
+    loadMapItem(params) {
         let {ret, key, id, autoSync, batched, syncInBackground, syncParams} = params;
         if (ret === null || ret === undefined) {
-            return this._noItemFound(params);
+            return this.noItemFound(params);
         }
         if (typeof ret === 'string') {
             ret = JSON.parse(ret);
             const {key, id} = params;
-            const newId = this._getId(key, id);
+            const newId = this.getId(key, id);
             if (this.enableCache) {
                 this.cache[newId] = ret;
             }
@@ -265,19 +265,19 @@ export default class Storage {
         return Promise.resolve(ret.rawData);
     }
 
-    _lookUpInMap(params) {
+    lookUpInMap(params) {
         let m = this._m,
             ret;
         let {key, id} = params;
-        let newId = this._getId(key, id);
+        let newId = this.getId(key, id);
         if (this.enableCache && this.cache[newId]) {
             ret = this.cache[newId];
-            return this._loadMapItem({ret, ...params});
+            return this.loadMapItem({ret, ...params});
         }
         if (m[newId] !== undefined) {
-            return this.getItem('map_' + m[newId]).then(ret => this._loadMapItem({ret, ...params}));
+            return this.getItem('map_' + m[newId]).then(ret => this.loadMapItem({ret, ...params}));
         }
-        return this._noItemFound({ret, ...params});
+        return this.noItemFound({ret, ...params});
     }
 
     remove(params) {
@@ -291,14 +291,14 @@ export default class Storage {
                 }
                 return this.removeItem(key);
             }
-            let newId = this._getId(key, id);
+            let newId = this.getId(key, id);
 
             //remove existed data
             if (m[newId] !== undefined) {
                 if (this.enableCache && this.cache[newId]) {
                     delete this.cache[newId];
                 }
-                this._removeIdInKey(key, id);
+                this.removeIdInKey(key, id);
                 let idTobeDeleted = m[newId];
                 delete m[newId];
                 this.setItem('map', JSON.stringify(m));
@@ -307,7 +307,7 @@ export default class Storage {
         });
     }
 
-    _removeIdInKey(key, id) {
+    removeIdInKey(key, id) {
         let indexTobeRemoved = (this._m.__keys__[key] || []).indexOf(id);
         if (indexTobeRemoved !== -1) {
             this._m.__keys__[key].splice(indexTobeRemoved, 1);
@@ -318,11 +318,11 @@ export default class Storage {
         let {key, id, autoSync = true, syncInBackground = true, syncParams} = params;
         return this._mapPromise.then(() => new Promise((resolve, reject) => {
             if (id === undefined) {
-                return resolve(this._lookupGlobalItem({
+                return resolve(this.lookupGlobalItem({
                     key, resolve, reject, autoSync, syncInBackground, syncParams,
                 }));
             }
-            return resolve(this._lookUpInMap({
+            return resolve(this.lookUpInMap({
                 key, id, resolve, reject, autoSync, syncInBackground, syncParams,
             }));
         }));
@@ -330,7 +330,7 @@ export default class Storage {
 
     clearMap() {
         this.removeItem('map').then(() => {
-            this._m = this._initMap();
+            this._m = this.initMap();
         });
     }
 
