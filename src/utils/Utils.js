@@ -1,5 +1,5 @@
 'use strict';
-import {AsyncStorage, DatePicker, FontSize, ModalIndicator, NetInfo, Overlay, React, Toast} from '../../index';
+import {AsyncStorage, DatePicker, FontSize, ModalIndicator, Overlay, React, Toast} from '../../index';
 import Storage from './Storage';
 import {NativeConstant, NativeUtils} from 'rn-curiosity';
 import {BackHandler, DeviceEventEmitter, FlatList, Platform, ToastAndroid} from 'react-native';
@@ -282,18 +282,6 @@ export default class Utils {
      */
     static goBack(self) {
         self.props.navigation.goBack(null);
-    }
-
-    /**
-     * 返回至指定页面
-     * @param self
-     * @param routeName
-     */
-    static goBackRouteName(self, routeName) {
-        const backAction = NavigationActions.back({
-            key: routeName,
-        });
-        self.props.navigation.dispatch(backAction);
     }
 
     /**
@@ -586,35 +574,6 @@ export default class Utils {
      */
     static removeReceivesMessage(receivesMessage) {
         receivesMessage.remove();
-    }
-
-    /**
-     * 设备网络变化监听
-     * @param listener
-     */
-    static netInfoAddEventListener(listener) {
-        NetInfo.addEventListener('connectionChange', listener);
-    }
-
-    /**
-     * 移出设备网络变化监听
-     * @param listener
-     */
-    static netInfoRemoveEventListener(listener) {
-        NetInfo.removeEventListener('connectionChange', listener);
-    }
-
-    /**
-     * 获取当前网络状态
-     * @param callback
-     * @param errorCallback
-     */
-    static getNetInfo(callback, errorCallback) {
-        NetInfo.getConnectionInfo().then(({type, effectiveType}) => {
-            return callback(type, effectiveType);
-        }).catch((e) => {
-            return errorCallback(e);
-        });
     }
 
 
