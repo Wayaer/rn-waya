@@ -19,7 +19,7 @@ export class FetchBlob {
         console.log('GET Url=>' + url);
         RNFetchBlob.fetch('GET', url, header || Header)
             .then((success) => {
-                return success;
+                return successCallBack(success);
             }).catch((error) => {
             return errorCallBack(error);
         });
