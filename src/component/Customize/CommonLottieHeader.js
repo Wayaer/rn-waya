@@ -33,7 +33,7 @@ export class CommonLottieHeader extends RefreshHeader {
         <View style={{flex: 1, marginTop: 20}}>
           <LottieView
               source={
-                this.state.status === 'refreshing' ? require('./res/refreshing2.json') : require('./res/refreshing.json')
+                this.state.status === 'refreshing' ? require('../../res/refreshing2.json') : require('../../res/refreshing.json')
               }
               progress={progress}
               autoPlay={this.state.status === 'refreshing'}

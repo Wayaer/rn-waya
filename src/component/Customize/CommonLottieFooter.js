@@ -38,7 +38,7 @@ export class CommonLottieFooter extends RefreshHeader {
         <View style={{flex: 1, marginBottom: 20}}>
           <LottieView
               key={this.state.status === 'loading'}
-              source={require('./res/loading.json')}
+              source={require('../../res/loading.json')}
               progress={progress}
               autoPlay={this.state.status === 'loading'}
               loop={this.state.status === 'loading'}
