@@ -9,6 +9,8 @@ import {CenterView, CustomButton} from '../component/Component';
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
     width = NativeConstant.Screen_Width
 const alertStyle = {height: height, width: width};
+const defaultDuration = 1500;
+const defaultPosition = 'center';
 let storage;
 
 export default class Utils {
@@ -826,28 +828,30 @@ export default class Utils {
     /**
      * Toast
      * @param content
+     * @param duration
+     * @param position
      * @constructor
      */
-    static Toast = (content) => {
-        Toast.show({text: content, position: 'center', duration: 1500});
+    static Toast = (content, duration, position) => {
+        Toast.show({text: content, position: position || defaultPosition, duration: duration || defaultDuration});
     };
-    static ToastSuccess = (content) => {
-        Toast.success(content);
+    static ToastSuccess = (content, duration, position) => {
+        Toast.success(content, duration || defaultDuration, position || defaultPosition);
     };
-    static ToastFail = (content) => {
-        Toast.fail(content);
+    static ToastFail = (content, duration, position) => {
+        Toast.fail(content, duration || defaultDuration, position || defaultPosition);
     };
-    static ToastSmile = (content) => {
-        Toast.smile(content);
+    static ToastSmile = (content, duration, position) => {
+        Toast.smile(content, duration || defaultDuration, position || defaultPosition);
     };
-    static ToastSad = (content) => {
-        Toast.sad(content);
+    static ToastSad = (content, duration, position) => {
+        Toast.sad(content, duration || defaultDuration, position || defaultPosition);
     };
-    static ToastInfo = (content) => {
-        Toast.info(content);
+    static ToastInfo = (content, duration, position) => {
+        Toast.info(content, duration || defaultDuration, position || defaultPosition);
     };
-    static ToastStop = (content) => {
-        Toast.stop(content);
+    static ToastStop = (content, duration, position) => {
+        Toast.stop(content, duration || defaultDuration, position || defaultPosition);
     };
 
 
