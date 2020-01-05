@@ -13,8 +13,8 @@
 
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {SegmentedBar} from 'teaset'
-import {Utils} from "../../index";
+import {SegmentedBar, Utils} from "../../index";
+import {Colors, FontSize} from "../constant/Constant";
 
 export default class Tabs extends Component<Props> {
     constructor(props) {
@@ -30,14 +30,14 @@ export default class Tabs extends Component<Props> {
             barItems: props.barItems ? props.barItems : [],
         };
     }
-    
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.activeIndex !== this.state.activeIndex) {
             this.setState({
                 activeIndex: nextProps.activeIndex
             })
         }
-        
+
     }
 
     onSegmentedBarChange(index) {
@@ -70,7 +70,7 @@ export default class Tabs extends Component<Props> {
                     justifyItem={justifyItem}
                     indicatorType={indicatorType}
                     indicatorPosition={indicatorPosition}
-                    indicatorLineColor={thisProps.activeColor ? thisProps.activeColor  : Colors.mainColor}
+                    indicatorLineColor={thisProps.activeColor ? thisProps.activeColor  : Colors.mainBlue}
                     indicatorLineWidth={thisProps.isHeader ? 0 : 2}
                     animated={animated}
                     autoScroll={autoScroll}
@@ -82,13 +82,13 @@ export default class Tabs extends Component<Props> {
                             <SegmentedBar.Item
                                 key={'item' + index}
                                 titleStyle = {{
-                                    fontSize:thisProps.isHeader ? FontSize.Size18 : FontSize.Size16,
-                                    color: thisProps.titleColor ? thisProps.titleColor  : Colors.text2,
+                                    fontSize: thisProps.isHeader ? FontSize.textSize_18 : FontSize.textSize_16,
+                                    color: thisProps.titleColor ? thisProps.titleColor : Colors.mainBlack,
                                 }}
                                 activeTitleStyle = {{
-                                    fontSize:thisProps.isHeader ? FontSize.Size18 : FontSize.Size16,
-                                    fontWeight:'700',
-                                    color: thisProps.activeColor ? thisProps.activeColor  : Colors.mainColor,
+                                    fontSize: thisProps.isHeader ? FontSize.textSize_18 : FontSize.textSize_16,
+                                    fontWeight: '700',
+                                    color: thisProps.activeColor ? thisProps.activeColor : Colors.mainBlue,
                                 }}
                                 title={item.title}
                             />

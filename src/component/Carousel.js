@@ -11,7 +11,7 @@
 
 
 import React, {Component} from 'react'
-import {View, Animated, Easing, StyleSheet,} from 'react-native'
+import {Animated, Easing, View,} from 'react-native'
 
 export default class Carousel extends Component {
     static defaultProps = {
@@ -139,7 +139,6 @@ export default class Carousel extends Component {
             this.props.onChange(index<this.state.kb_content.length-1?index:0);
         }
         Animated.sequence([
-
             // Animated.delay(this.state.delay),
             Animated.timing(
                 this.state.translateValue,

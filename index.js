@@ -62,12 +62,18 @@ export * from './src/component/SimpleChooseDialog';
 export * from './src/component/SimpleItemsDialog';
 export * from './src/component/ToastComponent';
 export * from './src/component/LazyImage';
-export * from './src/component/Customize/ChineseNormalHeader';
-export * from './src/component/Customize/ChineseNormalFooter';
-export * from './src/component/Customize/WithLastDateHeader';
-export * from './src/component/Customize/ChineseWithLastDateHeader';
-export * from './src/component/Customize/WithLastDateFooter';
-export * from './src/component/Customize/ChineseWithLastDateFooter';
+export * from './src/component/CustomList/ChineseNormalHeader';
+export * from './src/component/CustomList/ChineseNormalFooter';
+export * from './src/component/CustomList/WithLastDateHeader';
+export * from './src/component/CustomList/ChineseWithLastDateHeader';
+export * from './src/component/CustomList/WithLastDateFooter';
+export * from './src/component/CustomList/ChineseWithLastDateFooter';
+export * from './src/component/MultiSelect/MultiSelect';
+export * from './src/component/MultiSelect/MultiSelectItem';
+export * from './src/component/Carousel';
+export * from './src/component/Tabs';
+export * from './src/component/WayList';
+export * from './src/component/LargeList/LargeList';
 
 export {
     Theme,

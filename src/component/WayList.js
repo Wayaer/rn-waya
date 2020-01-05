@@ -1,4 +1,3 @@
-
 /* params：
 *  dataSource：Array; 数据源
 *  renderItem: function; 数据项渲染
@@ -12,31 +11,31 @@
 *  NoData: 无数据组件；
 */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import { ChineseWithLastDateHeader, ChineseWithLastDateFooter } from "react-native-spring-scrollview/Customize";
-import {SpringScrollView} from "react-native-spring-scrollview";
+import {ChineseWithLastDateHeader} from './CustomList/ChineseWithLastDateHeader';
+import {ChineseWithLastDateFooter} from './CustomList/ChineseWithLastDateFooter';
+import {SpringScrollView} from 'rn-scrollview';
 
-export default class List extends Component {
+export default class WayList extends Component {
     constructor(props) {
         super(props);
         const allLoaded = props.allLoaded !== undefined ? props.allLoaded : true;
         const isFirstLoad = props.isFirstLoad !== undefined ? props.isFirstLoad : true;
 
         this.state = {
-            network:true,
+            network: true,
 
-            isRefresh:false,
-            isFirstLoad:isFirstLoad,
-            allLoaded:allLoaded,
+            isRefresh: false,
+            isFirstLoad: isFirstLoad,
+            allLoaded: allLoaded,
 
-            data:props.dataSource ? props.dataSource : [],
+            data: props.dataSource ? props.dataSource : [],
             currentPage: props.currentPage ? props.currentPage : 1,
         };
     }
 
     componentDidMount(){
-        utils.netInfoAddEventListener(this.netInfo);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -45,38 +44,29 @@ export default class List extends Component {
 
         let dataSource = [];
         if (nextProps.currentPage === 1 || disableLoad) {
-            dataSource = nextProps.dataSource
+            dataSource = nextProps.dataSource;
         } else {
             dataSource = thisState.data.concat(nextProps.dataSource);
         }
 
         this.setState({
-            allLoaded:nextProps.allLoaded,
-            data:dataSource,
-            isFirstLoad:nextProps.isFirstLoad,
-        })
+            allLoaded: nextProps.allLoaded,
+            data: dataSource,
+            isFirstLoad: nextProps.isFirstLoad,
+        });
     }
 
     componentWillUnmount() {
-        utils.netInfoRemoveEventListener(this.netInfo);
-    };
+    }
 
-    /* 监听网络变化 */
-    netInfo = (status) => {
-        if (status.type === 'none' || status.type === 'unknown') {
-            this.setState({
-                network:false,
-            })
-        }
-    };
 
     onRefresh = () => {
         this.setState({
-            data:[],
-            isRefresh:true,
-        },() => {
+            data: [],
+            isRefresh: true,
+        }, () => {
             this.props.onRefresh();
-        })
+        });
     };
 
     endRefresh = () => {
@@ -126,7 +116,7 @@ export default class List extends Component {
                                         <View key={index}>
                                             {this.props.renderItem(item, index)}
                                         </View>
-                                    )
+                                    );
                                 })
                             }
                         </SpringScrollView>
@@ -139,6 +129,6 @@ export default class List extends Component {
                     )
                 }
             </View>
-        )
+        );
     }
 }
