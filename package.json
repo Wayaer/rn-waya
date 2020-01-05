@@ -1,6 +1,6 @@
 {
   "name": "rn-waya",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "React Native rn-waya",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/rn-waya",
@@ -12,13 +12,15 @@
     "useNpm": "npx nrm use npm",
     "useTaoBao": "npx nrm use taobao",
     "npmPublish": "npm publish",
-    "npmUnPublish": "npm unpublish rn-waya@0.0.14",
+    "npmUnPublish": "npm unpublish rn-waya@0.0.15",
     "npmDeprecate": "npm deprecate rn-waya@0.0.1 Please update the version for rn-waya"
   },
   "dependencies": {
     "eslint": "^6.7.2",
+    "lottie-react-native": "^3.3.2",
     "prop-types": "latest",
     "react-native": "^0.61.5",
+    "react-native-spring-scrollview": "git+https://github.com/Wayaer/react-native-spring-scrollview.git",
     "react-native-svg": "^9.13.6",
     "rn-curiosity": "latest",
     "teaset": "latest"
@@ -28,8 +30,10 @@
   },
   "peerDependencies": {
     "@react-native-community/async-storage": "latest",
+    "react-native-spring-scrollview": "git+https://github.com/Wayaer/react-native-spring-scrollview.git",
     "react-native-svg": "latest",
     "rn-curiosity": "latest",
+    "lottie-react-native": "latest",
     "rn-fetch-blob": "latest"
   },
   "prettier": {

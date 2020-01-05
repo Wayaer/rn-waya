@@ -62,6 +62,12 @@ export * from './src/component/SimpleChooseDialog';
 export * from './src/component/SimpleItemsDialog';
 export * from './src/component/ToastComponent';
 export * from './src/component/LazyImage';
+export * from './src/component/Customize/ChineseNormalHeader';
+export * from './src/component/Customize/ChineseNormalFooter';
+export * from './src/component/Customize/WithLastDateHeader';
+export * from './src/component/Customize/ChineseWithLastDateHeader';
+export * from './src/component/Customize/WithLastDateFooter';
+export * from './src/component/Customize/ChineseWithLastDateFooter';
 
 export {
     Theme,
