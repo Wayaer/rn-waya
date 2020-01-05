@@ -1,5 +1,5 @@
 import {Animated, Text, View} from 'react-native';
-
+import React from 'react';
 import {BaseComponent} from './BaseComponent';
 
 export class ToastComponent extends BaseComponent {

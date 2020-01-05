@@ -16,7 +16,7 @@ import {ChineseWithLastDateHeader} from './CustomList/ChineseWithLastDateHeader'
 import {ChineseWithLastDateFooter} from './CustomList/ChineseWithLastDateFooter';
 import {SpringScrollView} from 'rn-scrollview';
 import {BaseComponent} from './BaseComponent';
-
+import React from 'react';
 export class WayList extends BaseComponent {
     constructor(props) {
         super(props);

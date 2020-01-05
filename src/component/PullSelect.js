@@ -10,7 +10,7 @@
 * style：object；样式
 * renderSelectItem: function ; 渲染函数
 * */
-
+import React from 'react';
 import {View} from 'react-native';
 import {Select} from 'teaset';
 import {BaseComponent, Utils} from '../../index';

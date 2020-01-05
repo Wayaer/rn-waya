@@ -6,7 +6,7 @@ import {idx} from 'rn-scrollview/src/idx';
 import type {IndexPath, LargeListPropType, Offset} from 'rn-scrollview/src/Types'
 import {Group} from './Group';
 import {Section} from './Section';
-import {BaseComponent} from "../BaseComponent";
+import {BaseComponent} from '../BaseComponent';
 
 const screenLayout = Dimensions.get('window');
 const screenHeight = Math.max(screenLayout.width, screenLayout.height);

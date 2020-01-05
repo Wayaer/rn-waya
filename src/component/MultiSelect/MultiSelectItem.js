@@ -1,8 +1,9 @@
 import {Image, Text} from 'react-native';
 import {TouchView} from '../Component';
 import {BaseComponent} from '../BaseComponent';
+import React from 'react';
 
-export default class MultiSelectItem extends BaseComponent<Props> {
+export class MultiSelectItem extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.value = props.value;

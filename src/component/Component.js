@@ -3,7 +3,7 @@ import {Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native
 import {Constant} from '../constant/Constant';
 import Utils from '../utils/Utils';
 import {BaseComponent} from './BaseComponent';
-
+import React from 'react';
 /**
  * 自定义 点击按钮
  */

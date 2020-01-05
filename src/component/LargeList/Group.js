@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import type {GroupPropType} from 'rn-scrollview/src/Types';
 import {BaseComponent} from '../BaseComponent';

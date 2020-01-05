@@ -9,7 +9,7 @@
 *  duration：number, 每一次滚动切换的持续时间
 */
 
-
+import React from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {Colors} from '../constant/Constant';
 import {BaseComponent} from './BaseComponent';

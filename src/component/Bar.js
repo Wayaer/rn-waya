@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import {Animated, Easing, View} from 'react-native';
 import {BaseComponent} from './BaseComponent';
-
+import React from 'react';
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
     INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);

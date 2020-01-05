@@ -10,7 +10,7 @@
 * isHeader：boolean; 是否是渲染在头部；
 * height: number; 組件高度
 * */
-
+import React from 'react';
 import {View} from 'react-native';
 import {BaseComponent, SegmentedBar, Utils} from '../../index';
 import {Colors, FontSize} from '../constant/Constant';

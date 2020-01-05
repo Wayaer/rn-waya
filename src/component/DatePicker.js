@@ -4,7 +4,7 @@ import {CenterView, CustomButton, TouchView} from './Component';
 import {Colors, Constant, FontSize} from '../constant/Constant';
 import Utils from '../utils/Utils';
 import {BaseComponent} from './BaseComponent';
-
+import React from 'react';
 export class DatePicker extends BaseComponent {
     /*
      * pickerType:

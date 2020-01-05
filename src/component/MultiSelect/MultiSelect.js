@@ -7,10 +7,11 @@
 
 
 import {View} from 'react-native';
-import MultiSelectItem from './MultiSelectItem';
+import {MultiSelectItem} from './MultiSelectItem';
 import {BaseComponent, Utils} from '../../../index';
+import React from 'react';
 
-export default class MultiSelect extends BaseComponent<Props> {
+export  class MultiSelect extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {

@@ -74,7 +74,6 @@ export * from './src/component/Carousel';
 export * from './src/component/Tabs';
 export * from './src/component/WayList';
 export * from './src/component/LargeList/LargeList';
-export * from './src/component/Header';
 
 export {
     Theme,

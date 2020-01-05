@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, {PureComponent} from 'react';
 
 import {Dimensions, PixelRatio} from 'react-native';
