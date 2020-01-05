@@ -7,7 +7,7 @@
  *
  */
 
-import {NormalHeader} from 'react-native-spring-scrollview';
+import {NormalHeader} from 'rn-scrollview';
 
 export class ChineseNormalHeader extends NormalHeader {
   getTitle() {

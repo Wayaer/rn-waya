@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {AsyncStorage, StyleSheet, Text} from 'react-native';
-import {HeaderStatus, NormalFooter} from 'react-native-spring-scrollview';
+import {HeaderStatus, NormalFooter} from 'rn-scrollview';
 
 const LoadingKey = 'org.bolan9999.spring_scrollview.loading_time';
 

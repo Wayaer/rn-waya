@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import {RefreshHeader} from 'react-native-spring-scrollview';
+import {RefreshHeader} from 'rn-scrollview';
 import {View} from 'react-native';
 
 let LottieView;

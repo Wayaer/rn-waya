@@ -9,7 +9,7 @@
 
 import React from 'react';
 import {AsyncStorage, StyleSheet, Text} from 'react-native';
-import {HeaderStatus, NormalHeader} from 'react-native-spring-scrollview';
+import {HeaderStatus, NormalHeader} from 'rn-scrollview';
 
 const RefreshKey = 'org.bolan9999.spring_scrollview.refresh_time';
 

@@ -7,7 +7,7 @@
  *
  */
 
-import {NormalFooter} from 'react-native-spring-scrollview';
+import {NormalFooter} from 'rn-scrollview';
 
 export class ChineseNormalFooter extends NormalFooter {
     getTitle() {
