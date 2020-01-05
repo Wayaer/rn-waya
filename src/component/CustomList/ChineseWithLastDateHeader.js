@@ -1,12 +1,3 @@
-/*
- *
- * Created by Stone
- * https://github.com/bolan9999
- * Email: shanshang130@gmail.com
- * Date: 2019/1/25
- *
- */
-
 import {WithLastDateHeader} from './WithLastDateHeader';
 
 export class ChineseWithLastDateHeader extends WithLastDateHeader {

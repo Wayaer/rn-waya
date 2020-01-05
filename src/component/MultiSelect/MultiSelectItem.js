@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
 import {Image, Text} from 'react-native';
-import {TouchView} from "../Component";
+import {TouchView} from '../Component';
+import {BaseComponent} from '../BaseComponent';
 
-export default class MultiSelectItem extends Component<Props> {
-    constructor(props){
+export default class MultiSelectItem extends BaseComponent<Props> {
+    constructor(props) {
         super(props);
         this.value = props.value;
         this.icon = props.icon;
@@ -22,8 +22,8 @@ export default class MultiSelectItem extends Component<Props> {
 
     componentWillReceiveProps(nextProps){
         this.setState({
-            isSelect:nextProps.isSelect,
-        })
+            isSelect: nextProps.isSelect,
+        });
     }
     render() {
         return (
@@ -43,6 +43,6 @@ export default class MultiSelectItem extends Component<Props> {
                     )
                 }
             </TouchView>
-        )
+        );
     }
 }

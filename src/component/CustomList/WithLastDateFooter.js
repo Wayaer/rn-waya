@@ -1,12 +1,3 @@
-/*
- *
- * Created by Stone
- * https://github.com/bolan9999
- * Email: shanshang130@gmail.com
- * Date: 2019/1/25
- *
- */
-
 import React from 'react';
 import {AsyncStorage, StyleSheet, Text} from 'react-native';
 import {HeaderStatus, NormalFooter} from 'rn-scrollview';

@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-
 import {Dimensions, Keyboard, LayoutAnimation, Platform, StyleSheet, View} from 'react-native';
+import {BaseComponent} from './BaseComponent';
 
 const styles = StyleSheet.create({
     container: {
@@ -23,7 +22,7 @@ const defaultAnimation = {
     }
 };
 
-export class KeyboardSpacer extends Component {
+export class KeyboardSpacer extends BaseComponent {
 
     static defaultProps = {
         topSpacing: 0,

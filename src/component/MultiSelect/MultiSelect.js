@@ -6,13 +6,12 @@
 * */
 
 
-import React, {Component} from 'react';
 import {View} from 'react-native';
-import MultiSelectItem from "./MultiSelectItem";
-import {Utils} from "../../../index";
+import MultiSelectItem from './MultiSelectItem';
+import {BaseComponent, Utils} from '../../../index';
 
-export default class MultiSelect extends Component<Props> {
-    constructor(props){
+export default class MultiSelect extends BaseComponent<Props> {
+    constructor(props) {
         super(props);
         this.state = {
             dataSource: props.dataSource || [],
@@ -20,11 +19,11 @@ export default class MultiSelect extends Component<Props> {
         };
     }
 
-    componentWillReceiveProps(props){
+    componentWillReceiveProps(props) {
         this.setState({
             dataSource: props.dataSource || [],
             selectArray: props.selectArray || [],
-        })
+        });
     }
 
     setArrFilter = (val, type) => {
@@ -45,15 +44,15 @@ export default class MultiSelect extends Component<Props> {
             selectArray: arr,
         });
 
-        this.props.selectChange(arr)
+        this.props.selectChange(arr);
     };
 
     render() {
         const width = this.props.width;
         return (
-            <View style={{flexDirection: 'row', flexWrap:'wrap',}}>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                 {
-                    this.state.dataSource.map( (item) => {
+                    this.state.dataSource.map((item) => {
                         const val = item.val ? item.val : item.name;
 
                         return <MultiSelectItem
@@ -64,10 +63,10 @@ export default class MultiSelect extends Component<Props> {
                             onPress={(val, type) => this.setArrFilter(val, type)}
                             val={val}
                             name={item.name}
-                        />
+                        />;
                     })
                 }
             </View>
-        )
+        );
     }
 }

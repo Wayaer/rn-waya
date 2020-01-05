@@ -1,12 +1,3 @@
-/*
- *
- * Created by Stone
- * https://github.com/bolan9999
- * Email: shanshang130@gmail.com
- * Date: 2019/2/18
- *
- */
-
 import React from 'react';
 import {RefreshHeader} from 'rn-scrollview';
 import {View} from 'react-native';

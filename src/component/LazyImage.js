@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
 import {Animated, Easing, Image, StyleSheet, View} from 'react-native';
 import PropTypes from 'prop-types';
+import {BaseComponent} from './BaseComponent';
 
 const styles = StyleSheet.create({
     placeholderWrapper: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class LazyImage extends Component {
+class LazyImage extends BaseComponent {
     static propTypes = {
         /**
          * Image source

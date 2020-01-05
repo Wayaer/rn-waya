@@ -1,11 +1,11 @@
 'use strict';
-import React, {PureComponent} from 'react';
 import {Wheel} from 'teaset';
 import {CenterView, CustomButton, TouchView} from './Component';
 import {Colors, Constant, FontSize} from '../constant/Constant';
 import Utils from '../utils/Utils';
+import {BaseComponent} from './BaseComponent';
 
-export class DatePicker extends PureComponent {
+export class DatePicker extends BaseComponent {
     /*
      * pickerType:
      *       date        =>年月日选择

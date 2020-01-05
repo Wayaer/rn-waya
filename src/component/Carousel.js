@@ -10,18 +10,20 @@
 */
 
 
-import React, {Component} from 'react'
-import {Animated, Easing, View,} from 'react-native'
+import {Animated, Easing, View} from 'react-native';
+import {Colors} from '../constant/Constant';
+import {BaseComponent} from './BaseComponent';
 
-export default class Carousel extends Component {
+export default class Carousel extends BaseComponent {
     static defaultProps = {
         enableAnimation: true,
     };
 
     constructor(props) {
         super(props);
-        let translateValue= new Animated.ValueXY({x: 0, y: 0});
-        translateValue.addListener(({x,y})=>{});
+        let translateValue = new Animated.ValueXY({x: 0, y: 0});
+        translateValue.addListener(({x, y}) => {
+        });
         this.state = {
             translateValue: translateValue,
             // 滚屏高度
@@ -37,16 +39,16 @@ export default class Carousel extends Component {
             // 每一次滚动切换的持续时间
             duration: this.props.duration || 500,
             enableAnimation: true,
-        }
+        };
     }
 
     render() {
         return (
             <View
                 style={{
-                    backgroundColor: this.props.bgColor ? this.props.bgColor : Colors.whiteColor,
+                    backgroundColor: this.props.bgColor ? this.props.bgColor : Colors.mainWhite,
                     overflow: 'hidden',
-                    height: this.state.scrollHeight
+                    height: this.state.scrollHeight,
                 }}
             >
                 {
@@ -56,15 +58,15 @@ export default class Carousel extends Component {
                                 {flexDirection: 'column'},
                                 {
                                     transform: [
-                                        {translateY: this.state.translateValue.y}
-                                    ]
-                                }
+                                        {translateY: this.state.translateValue.y},
+                                    ],
+                                },
                             ]}>
                             {this.state.kb_content.map(this._createKbItem.bind(this))}
                         </Animated.View> : null
                 }
             </View>
-        )
+        );
     }
 
     componentWillReceiveProps(nextProps) {
@@ -73,13 +75,13 @@ export default class Carousel extends Component {
         if (content.length !== 0) {
             let h = (content.length + 1) * this.state.scrollHeight;
             this.setState({
-                    dataArray:dataArray,kb_content: content.concat(content[0]),
+                    dataArray: dataArray, kb_content: content.concat(content[0]),
                     kb_contentOffsetY: h,
-                    enableAnimation: nextProps.enableAnimation
+                    enableAnimation: nextProps.enableAnimation,
                 }, () => {
                     this.startAnimation();
                 }
-            )
+            );
         }
     }
 
@@ -90,8 +92,8 @@ export default class Carousel extends Component {
             let h = (content.length + 1) * this.state.scrollHeight;
             this.setState({
                 kb_content: content.concat(content[0]),
-                kb_contentOffsetY: h
-            })
+                kb_contentOffsetY: h,
+            });
 
             // 开始动画
             // this._startAnimation()
@@ -102,19 +104,19 @@ export default class Carousel extends Component {
     _createKbItem(kbItem, index) {
         return (
             <View key={index}
-                  style={[{justifyContent: 'center', alignSelf:'center', height: this.state.scrollHeight}]}>
+                  style={[{justifyContent: 'center', alignSelf: 'center', height: this.state.scrollHeight}]}>
                 {
                     this.props.createKbItem(kbItem, index)
                 }
             </View>
-        )
+        );
     }
 
     startAnimation = () => {
         if (this.state.enableAnimation) {
-            if(!this.animation){
+            if (!this.animation) {
                 this.animation = setTimeout(() => {
-                    this.animation=null;
+                    this.animation = null;
                     this._startAnimation();
                 }, this.state.delay);
             }
@@ -127,7 +129,7 @@ export default class Carousel extends Component {
         if (this.animation) {
             clearTimeout(this.animation);
         }
-        if(this.state.translateValue){
+        if (this.state.translateValue) {
             this.state.translateValue.removeAllListeners();
         }
     }
@@ -136,7 +138,7 @@ export default class Carousel extends Component {
         this.state.kb_tempValue -= this.state.scrollHeight;
         if (this.props.onChange) {
             let index = Math.abs(this.state.kb_tempValue) / (this.state.scrollHeight);
-            this.props.onChange(index<this.state.kb_content.length-1?index:0);
+            this.props.onChange(index < this.state.kb_content.length - 1 ? index : 0);
         }
         Animated.sequence([
             // Animated.delay(this.state.delay),
@@ -146,7 +148,7 @@ export default class Carousel extends Component {
                     isInteraction: false,
                     toValue: {x: 0, y: this.state.kb_tempValue},
                     duration: this.state.duration, // 动画持续的时间（单位是毫秒），默认为500
-                    easing: Easing.linear
+                    easing: Easing.linear,
                 }
             ),
         ])
@@ -160,7 +162,6 @@ export default class Carousel extends Component {
                 this.startAnimation();
 
 
-
-            })
+            });
     }
 }

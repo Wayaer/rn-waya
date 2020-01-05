@@ -1,8 +1,8 @@
-import {PureComponent} from 'react';
 import {StyleSheet} from 'react-native';
 import type {GroupPropType} from 'rn-scrollview/src/Types';
+import {BaseComponent} from '../BaseComponent';
 
-export class Group extends PureComponent<GroupPropType> {
+export class Group extends BaseComponent<GroupPropType> {
     _currentIndex = 0;
     _offset = 0;
     _margin = 0;

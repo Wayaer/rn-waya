@@ -11,12 +11,11 @@
 * height: number; 組件高度
 * */
 
-import React, {Component} from 'react';
 import {View} from 'react-native';
-import {SegmentedBar, Utils} from "../../index";
-import {Colors, FontSize} from "../constant/Constant";
+import {BaseComponent, SegmentedBar, Utils} from '../../index';
+import {Colors, FontSize} from '../constant/Constant';
 
-export default class Tabs extends Component<Props> {
+export default class Tabs extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {

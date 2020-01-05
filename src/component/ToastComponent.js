@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Animated, Text, View} from 'react-native';
 
 import {BaseComponent} from './BaseComponent';

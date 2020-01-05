@@ -11,24 +11,23 @@
 * renderSelectItem: function ; 渲染函数
 * */
 
-import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View} from 'react-native';
 import {Select} from 'teaset';
-import {Utils} from "../../index";
+import {BaseComponent, Utils} from '../../index';
 
-export default class PullSelect extends Component<Props> {
+export class PullSelect extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            selectData:props.selectData ? props.selectData : [],
-            selectValue:props.selectValue ? props.selectValue : '',
+            selectData: props.selectData ? props.selectData : [],
+            selectValue: props.selectValue ? props.selectValue : '',
         };
     }
 
-    componentWillReceiveProps(props){
+    componentWillReceiveProps(props) {
         this.setState({
-            selectData:props.selectData ? props.selectData : [],
-            selectValue:props.selectValue ? props.selectValue : '',
+            selectData: props.selectData ? props.selectData : [],
+            selectValue: props.selectValue ? props.selectValue : '',
         })
     }
 

@@ -1,8 +1,8 @@
-import {Component} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import {SectionPropType} from 'rn-scrollview/src/Types';
+import {BaseComponent} from '../BaseComponent';
 
-export class Section extends Component<SectionPropType> {
+export class Section extends BaseComponent<SectionPropType> {
     state = {
         section: 0,
     };

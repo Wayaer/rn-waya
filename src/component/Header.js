@@ -1,60 +1,95 @@
-'use strict';
-import {CenterView, CustomImage, TouchView} from './Component';
-import React, {PureComponent} from 'react';
-import {Text} from 'react-native'
+import {BaseComponent} from './BaseComponent';
+import {TouchView, Utils} from '../../index';
+import {Image, Text, View} from 'react-native';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Colors, Constant, FontSize} from '../constant/Constant';
-import Utils from '../utils/Utils';
 
-export class CustomHeader extends PureComponent {
+export class Header extends BaseComponent<PropTypes> {
     constructor(props) {
         super(props);
-        this.leftImage = this.props.leftImage;
-        this.leftImageOnPress = this.props.leftImageOnPress;
-        this.leftImageStyle = this.props.leftImageStyle;
-        this.rightImage = this.props.rightImage;
-        this.rightImageOnPress = this.props.rightImageOnPress;
-        this.rightImageStyle = this.props.rightImageStyle;
-        this.titleText = this.props.titleText;
-        this.titleTextStyle = this.props.titleTextStyle;
+        this.state = {
+            headerBackgroundColor: props.headerBackgroundColor || Colors.mainBlue,
+            headerColor: props.headerColor || Colors.mainWhite,
+        };
+    }
 
+    setHeaderBackgroundColor(color) {
+        this.setState({
+            headerBackgroundColor: color,
+        });
     }
 
     render() {
-        return (
+        return (<View
+            ref={this.props.ref}
+            style={{
+                width: Constant.Screen_Width,
+                backgroundColor: this.state.headerBackgroundColor,
+                paddingTop: Constant.CurrentHeight,
+                paddingHorizontal: Utils.getWidth(24),
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                height: Utils.getHeight(90) + Constant.CurrentHeight,
+            }}>
             <TouchView
                 style={{
-                    width: Constant.Screen_Width,
-                    backgroundColor: Colors.mainBlack,
-                    paddingTop: Constant.CurrentHeight,
-                    paddingHorizontal: Utils.getWidth(24),
-                    alignItems: 'center',
+                    justifyContent: 'flex-start',
                     flexDirection: 'row',
-                    height: Utils.getHeight(90) + Constant.CurrentHeight
-                }}>
-                <CenterView style={{minWidth: Constant.Screen_Width / 4}}>
-                    <CustomImage
-                        onPress={this.leftImageOnPress}
-                        require={this.leftImage}
-                        style={this.leftImageStyle || {
-                            width: Utils.getWidth(32),
-                            height: Utils.getWidth(32)
-                        }}/></CenterView>
-                <Text style={this.titleTextStyle || {
-                    color: Colors.mainWhite,
-                    fontSize: FontSize.textSize_16,
-                    fontWeight: 'bold',
-                }}>{this.titleText}</Text>
-                <CenterView style={{minWidth: Constant.Screen_Width / 4}}>
-                    <CustomImage
-                        onPress={this.rightImageOnPress}
-                        require={this.rightImage}
-                        style={this.rightImageStyle || {width: Utils.getWidth(32), height: Utils.getWidth(32)}}/>
+                    minWidth: Constant.Screen_Width / 6,
+                    padding: Utils.getHeight(10),
+                }}
+                onPress={this.props.leftImageOnPress}>
+                <Image
+                    source={this.props.leftImageSource}
+                    style={this.props.leftImageStyle || {
+                        width: Utils.getWidth(40),
+                        height: Utils.getWidth(40),
+                        // alignItems: 'flex-start',
 
-                </CenterView>
+                    }}/>
+            </TouchView>
+            <Text style={this.props.titleTextStyle || {
+                color: Colors.mainWhite,
+                fontSize: FontSize.textSize_18,
+                fontWeight: 'bold',
+            }}>{this.props.titleText}</Text>
 
+            <View style={{
+                minWidth: Constant.Screen_Width / 6,
+            }}>
+                {this.props.rightImageSource && <TouchView
+                    style={{
+                        justifyContent: 'flex-end',
+                        flexDirection: 'row',
+                        padding: Utils.getHeight(10),
+                    }}
+                    onPress={this.props.leftImageOnPress}>
+                    <Image
+                        source={this.props.leftImageSource}
+                        style={this.props.leftImageStyle || {
+                            width: Utils.getWidth(40),
+                            height: Utils.getWidth(40),
+                        }}/>
+                </TouchView>}
+            </View>
 
-            </TouchView>)
+        </View>);
     }
 
-
 }
+
+Header.propTypes = {
+    leftImageSource: PropTypes.leftImageSource,
+    leftImageOnPress: PropTypes.leftImageOnPress,
+    leftImageStyle: PropTypes.leftImageStyle,
+    rightImageSource: PropTypes.rightImageSource,
+    rightImageOnPress: PropTypes.rightImageOnPress,
+    rightImageStyle: PropTypes.rightImageStyle,
+    titleText: PropTypes.titleText,
+    titleTextStyle: PropTypes.titleTextStyle,
+    headerBackgroundColor: PropTypes.headerBackgroundColor,
+    headerColor: PropTypes.headerColor,
+    ref: PropTypes.ref,
+};

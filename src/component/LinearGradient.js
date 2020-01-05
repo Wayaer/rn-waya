@@ -1,7 +1,7 @@
 'use strict';
-import React, {PureComponent} from 'react';
 import {Platform, processColor, requireNativeComponent, StyleSheet, View} from 'react-native';
 import {TouchView} from './Component';
+import {BaseComponent} from './BaseComponent';
 
 const NativeLinearGradient = requireNativeComponent('LinearGradient', null);
 const convertPoint = (name, point) => {
@@ -31,7 +31,7 @@ const validNumber = (defaultValue) => (value) => {
     return typeof value === 'number' ? value : defaultValue;
 };
 
-class NativeClass extends PureComponent {
+class NativeClass extends BaseComponent {
 
     render() {
         if (Platform.OS === 'android') {
@@ -116,7 +116,7 @@ class NativeClass extends PureComponent {
 
 }
 
-export class LinearGradient extends PureComponent {
+export class LinearGradient extends BaseComponent {
 
     constructor(props) {
         super(props);

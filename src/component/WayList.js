@@ -11,13 +11,13 @@
 *  NoData: 无数据组件；
 */
 
-import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {ChineseWithLastDateHeader} from './CustomList/ChineseWithLastDateHeader';
 import {ChineseWithLastDateFooter} from './CustomList/ChineseWithLastDateFooter';
 import {SpringScrollView} from 'rn-scrollview';
+import {BaseComponent} from './BaseComponent';
 
-export default class WayList extends Component {
+export class WayList extends BaseComponent {
     constructor(props) {
         super(props);
         const allLoaded = props.allLoaded !== undefined ? props.allLoaded : true;

@@ -1,17 +1,8 @@
-/*
- *
- * Created by Stone
- * https://github.com/bolan9999
- * Email: shanshang130@gmail.com
- * Date: 2019/1/25
- *
- */
-
 import React from 'react';
 import {AsyncStorage, StyleSheet, Text} from 'react-native';
 import {HeaderStatus, NormalHeader} from 'rn-scrollview';
 
-const RefreshKey = 'org.bolan9999.spring_scrollview.refresh_time';
+const RefreshKey = 'scrollview.refresh_time';
 
 export class WithLastDateHeader extends NormalHeader {
   lastTime: Date;

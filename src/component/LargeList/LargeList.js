@@ -6,11 +6,12 @@ import {idx} from 'rn-scrollview/src/idx';
 import type {IndexPath, LargeListPropType, Offset} from 'rn-scrollview/src/Types'
 import {Group} from './Group';
 import {Section} from './Section';
+import {BaseComponent} from "../BaseComponent";
 
 const screenLayout = Dimensions.get('window');
 const screenHeight = Math.max(screenLayout.width, screenLayout.height);
 
-export class LargeList extends React.PureComponent<LargeListPropType> {
+export class LargeList extends BaseComponent<LargeListPropType> {
     _groupRefs = [];
     _offset: Animated.Value;
     _scrollView = React.createRef();

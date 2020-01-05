@@ -1,13 +1,13 @@
 'use strict';
-import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Animated, Easing, View} from 'react-native';
+import {BaseComponent} from './BaseComponent';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
     INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
-export class ProgressBar extends PureComponent {
+export class ProgressBar extends BaseComponent {
     static propTypes = {
         animated: PropTypes.bool,
         borderColor: PropTypes.string,

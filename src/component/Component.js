@@ -1,13 +1,13 @@
 'use strict';
-import React, {PureComponent} from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import {Constant} from '../constant/Constant';
 import Utils from '../utils/Utils';
+import {BaseComponent} from './BaseComponent';
 
 /**
  * 自定义 点击按钮
  */
-export class TouchView extends PureComponent {
+export class TouchView extends BaseComponent {
     constructor(props) {
         super(props);
         if (this.props.onPress) {
@@ -49,7 +49,7 @@ export class TouchView extends PureComponent {
  *
  * style  //样式
  */
-export class CenterView extends PureComponent {
+export class CenterView extends BaseComponent {
     render() {
         return (<TouchView
                 {...this.props}
@@ -68,7 +68,7 @@ export class CenterView extends PureComponent {
 /**
  * 自定义 Button
  */
-export class CustomButton extends PureComponent {
+export class CustomButton extends BaseComponent {
     render() {
         return (
             <CenterView
@@ -89,7 +89,7 @@ export class CustomButton extends PureComponent {
  * 自定义 Image
  *
  */
-export class CustomImage extends PureComponent {
+export class CustomImage extends BaseComponent {
     //resizeMode
     // cover 模式只求在显示比例不失真的情况下填充整个显示区域。可以对图片进行放大或者缩小，超出显示区域的部分不显示， 也就是说，图片可能部分会显示不了。
     // contain 模式是要求显示整张图片, 可以对它进行等比缩小, 图片会显示完整,可能会露出Image控件的底色。 如果图片宽高都小于控件宽高，则不会对图片进行放大。
@@ -124,7 +124,7 @@ export class CustomImage extends PureComponent {
 /*
 * 自定义ImageBackground
 * */
-export class CustomImageBackground extends PureComponent {
+export class CustomImageBackground extends BaseComponent {
     render() {
         return (
             <ImageBackground
@@ -144,7 +144,7 @@ export class CustomImageBackground extends PureComponent {
 /**
  * 自定义 Checkbox
  */
-export class CustomCheckbox extends PureComponent {
+export class CustomCheckbox extends BaseComponent {
     constructor(props) {
         super(props);
         this.onChange = props.onChange;
@@ -184,7 +184,7 @@ export class CustomCheckbox extends PureComponent {
 /**
  * 自定义 TabBarItem
  */
-export class TabBarItem extends PureComponent {
+export class TabBarItem extends BaseComponent {
     render() {
         return (
             <TouchView
