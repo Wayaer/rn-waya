@@ -183,7 +183,7 @@ export class ProgressBar extends BaseComponent {
  * 自定义 Bar
  *
  */
-export class BarLine extends PureComponent {
+export class BarLine extends BaseComponent {
     render() {
         return (
             <ProgressBar
