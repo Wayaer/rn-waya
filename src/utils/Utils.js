@@ -319,9 +319,10 @@ export default class Utils {
      * 新路由替换当前路由
      * @param self
      * @param routeName
+     * @param data
      */
-    static replaceView(self, routeName) {
-        self.props.navigation.replace(routeName);
+    static replaceView(self, routeName, data) {
+        self.props.navigation.replace(routeName, {data});
     }
 
     /**
@@ -739,6 +740,26 @@ export default class Utils {
             });
         }
         return storage;
+    }
+
+    /**
+     * 同步获取storage数据
+     * @param key
+     * @param successCallBack
+     * @param errorCallback
+     */
+    static async getSyncData(key, successCallBack, errorCallback) {
+        try {
+            const value = await AsyncStorage.getItem(key)
+            let das = JSON.parse(value)
+            if (das.rawData) {
+                return successCallBack(das.rawData);
+            } else {
+                return errorCallback(das);
+            }
+        } catch (e) {
+            return errorCallback(e);
+        }
     }
 
     /**
