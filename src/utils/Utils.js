@@ -975,8 +975,10 @@ export default class Utils {
      * @param url
      * @param callbackPercent
      * @param callbackUnzip
+     * @param androidExternalFiles  true 保存在外置储存  false保存在内部储存 默认false
      */
-    static downloadBundleZipWithUnZip(url, callbackPercent, callbackUnzip) {
+    static downloadBundleZipWithUnZip(url, callbackPercent, callbackUnzip, androidExternalFiles) {
+        if (androidExternalFiles == null) androidExternalFiles = false;
         if (NativeConstant.IOS) {
             const path = NativeConstant.LibraryDirectory + '/';
             FetchBlob.downloadFile(url, path, 'bundle.zip', (percent) => {
@@ -989,7 +991,7 @@ export default class Utils {
                 return console.error('download Fail');
             });
         } else if (NativeConstant.Android) {
-            const path = NativeConstant.FilesDir + '/';
+            const path = (androidExternalFiles ? NativeConstant.ExternalFilesDir : NativeConstant.FilesDir) + '/';
             FetchBlob.downloadFile(url, path, 'bundle.zip', (percent) => {
                 return callbackPercent(percent);
             }, () => {
