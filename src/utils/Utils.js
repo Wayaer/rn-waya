@@ -742,25 +742,6 @@ export default class Utils {
         return storage;
     }
 
-    /**
-     * 同步获取storage数据
-     * @param key
-     * @param successCallBack
-     * @param errorCallback
-     */
-    static async getSyncData(key, successCallBack, errorCallback) {
-        try {
-            const value = await AsyncStorage.getItem(key)
-            let das = JSON.parse(value)
-            if (das.rawData) {
-                return successCallBack(das.rawData);
-            } else {
-                return errorCallback(das);
-            }
-        } catch (e) {
-            return errorCallback(e);
-        }
-    }
 
     /**
      * 保存数据
@@ -818,6 +799,17 @@ export default class Utils {
             return successCallBack(data);
         }).catch((error) => {
             return errorCallback(error);
+        });
+    }
+
+    /**
+     * 查找某个key下的所有数据 同步
+     * @param key
+     */
+    static async findAsyncData(key) {
+        Utils.isInit();
+        return await storage.load({
+            key: key,
         });
     }
 
