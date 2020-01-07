@@ -807,10 +807,18 @@ export default class Utils {
      * @param key
      */
     static async findAsyncData(key) {
-        Utils.isInit();
-        return await storage.load({
-            key: key,
-        });
+        try {
+            const value = await storage.load({
+                key: key,
+            });
+            if (value) {
+                return value;
+            } else {
+                return false
+            }
+        } catch (e) {
+            return false
+        }
     }
 
     static isInit() {
