@@ -1,8 +1,9 @@
 import React from 'react';
 
-import {Animated, TouchableOpacity} from 'react-native';
-
+import {Animated} from 'react-native';
 import {BaseComponent} from './BaseComponent';
+import {TouchView} from './Component';
+
 
 export class BaseDialog extends BaseComponent {
 
@@ -13,29 +14,28 @@ export class BaseDialog extends BaseComponent {
         showAnimationType: 'spring'
     }
 
-    path = new Animated.Value(0);
+    _path = new Animated.Value(0);
 
 
     constructor(props) {
         super(props);
         this.state = {
-            isShow: false
+            _isShow: false
         }
     }
 
     isShowing() {
-        return this.state.isShow;
+        return this.state._isShow;
     }
 
     show(callback, state = {}) {
-        this.setState({isShow: true, ...state}, () => {
-            // eslint-disable-next-line eqeqeq
+        this.setState({_isShow: true, ...state}, () => {
             if (!this.props.showAnimationType || this.props.showAnimationType === 'spring') {
-                Animated.spring(this.path, {toValue: 1}).start(() => {
+                Animated.spring(this._path, {toValue: 1}).start(() => {
                     callback && callback();
                 });
             } else {
-                Animated.timing(this.path, {toValue: 1}).start(() => {
+                Animated.timing(this._path, {toValue: 1}).start(() => {
                     callback && callback();
                 });
             }
@@ -43,8 +43,8 @@ export class BaseDialog extends BaseComponent {
     }
 
     dismiss(callback) {
-        Animated.timing(this.path, {toValue: 0, duration: 200}).start(() => {
-            this.setState({isShow: false}, () => {
+        Animated.timing(this._path, {toValue: 0, duration: 200}).start(() => {
+            this.setState({_isShow: false}, () => {
                 callback && callback();
             });
         });
@@ -54,7 +54,7 @@ export class BaseDialog extends BaseComponent {
      * 重写前景动画效果
      * @param {*} path
      */
-    getContentInterpolate(path) {
+    _getContentInterpolate(path) {
         return [
             {
                 translateY: path.interpolate(
@@ -71,7 +71,7 @@ export class BaseDialog extends BaseComponent {
     /**
      * 前景位置
      */
-    getContentPosition() {
+    _getContentPosition() {
         return {justifyContent: 'center', alignItems: 'center'}
     }
 
@@ -83,17 +83,17 @@ export class BaseDialog extends BaseComponent {
     }
 
     render() {
-        if (this.state.isShow || (this.props && this.props.removeSubviews === false)) {
+        if (this.state._isShow || (this.props && this.props.removeSubviews === false)) {
             return <Animated.View
                 style={{
                     position: 'absolute', left: 0, right: 0, top: 0, bottom: 0,
-                    backgroundColor: 0x00000050, opacity: this.path.interpolate({
+                    backgroundColor: 0x00000050, opacity: this._path.interpolate({
                         inputRange: [0, 0.5, 1],
                         outputRange: [0, 1, 1]
-                    }), ...this.getContentPosition(),
+                    }), ...this._getContentPosition(),
                     transform: [
                         {
-                            translateX: this.path.interpolate(
+                            translateX: this._path.interpolate(
                                 {
                                     inputRange: [0, 0.01, 1],
                                     outputRange: [-this.mScreenWidth, 0, 0]
@@ -102,7 +102,7 @@ export class BaseDialog extends BaseComponent {
                         }
                     ]
                 }}>
-                <TouchableOpacity
+                <TouchView
                     onPress={() => {
                         if (!this.props || (this.props.coverClickable || this.props.coverClickable == null)) {
                             this.dismiss(this.props.onCoverPress);
@@ -111,8 +111,8 @@ export class BaseDialog extends BaseComponent {
                     style={{position: 'absolute', width: this.mScreenWidth, height: this.mScreenHeight}}/>
 
                 <Animated.View style={{
-                    opacity: this.path.interpolate({inputRange: [0, 0.5, 1], outputRange: [0, 0, 1]}),
-                    transform: this.getContentInterpolate(this.path),
+                    opacity: this._path.interpolate({inputRange: [0, 0.5, 1], outputRange: [0, 0, 1]}),
+                    transform: this._getContentInterpolate(this._path),
                 }}>
                     {this.renderContent()}
                 </Animated.View>

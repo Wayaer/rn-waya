@@ -1,9 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
-import {Dimensions, PixelRatio} from 'react-native';
+import {
+    Dimensions,
+    PixelRatio
+} from 'react-native';
 
-export class BaseComponent extends PureComponent {
+export class BaseComponent extends Component {
 
     mScreenWidth = Dimensions.get('window').width;
 
@@ -21,9 +24,7 @@ export class BaseComponent extends PureComponent {
      * @param {*} size 375标注图下的值
      */
     getSize(size) {
-        // eslint-disable-next-line radix
         return parseInt(this.mScreenWidth * size / 375);
     }
 
 }
-

@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, View} from 'react-native';
 
 import {PickerView} from './PickerView';
 
 import {BaseDialog} from './BaseDialog';
 import Utils from '../utils/Utils';
+import {TouchView} from "./Component";
 
 
 export class DateTimePicker extends BaseDialog {
@@ -96,7 +97,6 @@ export class DateTimePicker extends BaseDialog {
             }
             pickerData.push(hours);
             if (this.props.selectedValue) {
-                // eslint-disable-next-line radix,no-undef
                 selectedIndex.push((this.props.selectedValue[3] ? parseInt(this.props.selectedValue[3]) : new Date().getHours()) - 1);
             } else {
                 selectedIndex.push((new Date().getHours() - 1));
@@ -186,7 +186,7 @@ export class DateTimePicker extends BaseDialog {
                 backgroundColor: '#ffffff', flexDirection: 'row',
                 justifyContent: 'space-between', position: 'absolute', top: 0
             }}>
-                <TouchableOpacity
+                <TouchView
                     onPress={() => {
                         this.dismiss(() => this.props.onPickerCancel && this.props.onPickerCancel(this.props.selectedValue));
                     }}
@@ -201,8 +201,8 @@ export class DateTimePicker extends BaseDialog {
                         fontWeight: '400',
                         color: this.props.cancelTextColor
                     }}>{this.props.cancelText}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
+                </TouchView>
+                <TouchView
                     onPress={() => {
                         this.dismiss(() => this.props.onPickerConfirm && this.props.onPickerConfirm(this.props.selectedValue));
                     }}
@@ -217,7 +217,7 @@ export class DateTimePicker extends BaseDialog {
                         fontWeight: '400',
                         color: this.props.confirmTextColor
                     }}>{this.props.confirmText}</Text>
-                </TouchableOpacity>
+                </TouchView>
             </View>
         </View>
     }
