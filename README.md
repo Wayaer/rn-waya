@@ -1,4 +1,4 @@
-# 全功能版本的的wayae必须依赖以下库
+
 
 ```
   yarn add rn-fetch-blob
