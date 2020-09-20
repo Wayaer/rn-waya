@@ -1,5 +1,5 @@
 # 全功能版本的的wayae必须依赖以下库
-*本库仅供个人使用，用于封装基础方法和组件，他人使用若有问题自行负责
+
 ```
   yarn add rn-fetch-blob
          
@@ -10,58 +10,12 @@
 ```
 
 
-#组件
-   
-Checkbox
-```html
-<CustomCheckbox
-      onChange={(check)=>{
-         //
-      }}
-      checkedIcon={ }     //选中时 的图片
-      uncheckedIcon={  }  //未选中时 的图片
-      checked={  }        // 默认状态
-   />
-```
-
-渐变组件   
-```html
-
-   <LinearGradient
-       horizontal={true}
-       colors={['#000000', '#ffffff']}
-       viewStyle={{
-           flexDirection: 'row',
-           height: Constant.CurrentHeight + Utils.getHeight(100),
-           paddingTop: Constant.CurrentHeight,
-           alignItems: 'center',
-           width: Screen_Width,
-           justifyContent: 'space-between',
-           paddingHorizontal: Utils.getWidth(25),
-       }}
-       style={{}}>
-   </LinearGradient>
-``` 
-单线动画
-```html
-  <BarLine
-    progress={this.state.progress}  //0 ~ 1
-    style={{
-        width: this.width,
-        unfilledColor: Colors.gray999,
-        color: Colors.blueStart,
-    }}/>}
-
-```
-
 时间选择器 
 ```html
  <DatePicker/>
 ```
 <img  src="src/res/ios_datePicker.png" width="420" height = "750"> <img  src="src/res/android_datePicker.png" width="420" height = "750">
 
-
-属性
 
 ```pickerType || 'dateTime'  类型  
 
@@ -281,9 +235,6 @@ onCancel   取消 回调
 
   
 ```   
-  
-推荐库
-
 ```
 
  react-native-fast-image `  //大图片优化
