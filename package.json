@@ -16,26 +16,24 @@
     "npmDeprecate": "npm deprecate rn-waya@0.0.1 Please update the version for rn-waya"
   },
   "dependencies": {
-    "eslint": "^6.7.2",
-    "lottie-react-native": "^3.3.2",
-    "prop-types": "latest",
-    "react-native": "^0.61.5",
+    "@react-native-community/async-storage": "^1.12.1",
+    "eslint": "^7.11.0",
+    "lottie-react-native": "^3.5.0",
+    "prop-types": "^15.7.2",
+    "react-native": "^0.63.3",
     "react-native-svg": "^9.13.6",
-    "rn-scrollview": "latest",
-    "teaset": "latest"
+    "teaset": "^0.7.4",
+    "react-native-svg": "^0.2.1",
+    "rn-curiosity": "^0.4.2",
+    "lottie-react-native": "^3.5.0",
+    "rn-fetch-blob": "^0.12.0",
+    "rn-scrollview": "^2.2.2"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/react-native": "^0.60.27"
   },
-  "peerDependencies": {
-    "@react-native-community/async-storage": "latest",
-    "react-native-svg": "latest",
-    "rn-curiosity": "latest",
-    "lottie-react-native": "latest",
-    "rn-fetch-blob": "latest",
-    "rn-scrollview": "latest"
-  },
+
   "prettier": {
     "requirePragma": true,
     "proseWrap": "always",

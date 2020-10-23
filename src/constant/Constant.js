@@ -3,7 +3,7 @@ import {Platform} from 'react-native';
 import {NativeConstant} from 'rn-curiosity';
 
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
-    width = NativeConstant.Screen_Width
+    width = NativeConstant.Screen_Width;
 
 export const FontSize = { //默认大小 14
     textSize_7: 7,
@@ -84,11 +84,7 @@ export class Fit {
                 return true;
             } else if (y > 2400 && y < 2560) {//2k 16:9
                 return false;
-            } else if (y > 2560 && y < 3300) {//2k 18:9  19.5:9
-                return true;
-            } else {
-                return false;
-            }
+            } else {return y > 2560 && y < 3300;}
         } else if (Platform.OS === 'ios') {
             if (y < 1400) {//4.7寸 16:9
                 return false;
