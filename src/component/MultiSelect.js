@@ -4,14 +4,13 @@
 * selectArray：array; [val1,val2,val3]
 * selectChange:function;
 * */
-
-
-import {View} from 'react-native';
-import {MultiSelectItem} from './MultiSelectItem';
-import {BaseComponent, Utils} from '../../../index';
 import React from 'react';
+import {Image, Text} from 'react-native';
+import {TouchView} from './Component';
+import {View} from 'react-native';
+import {BaseComponent, Utils} from '../../index';
 
-export  class MultiSelect extends BaseComponent<Props> {
+export class MultiSelect extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +37,7 @@ export  class MultiSelect extends BaseComponent<Props> {
         } else {
             const valIndex = arr.indexOf(val);
             if (valIndex > -1) {
-                arr.splice(valIndex,1);
+                arr.splice(valIndex, 1);
             }
         }
         this.setState({
@@ -68,6 +67,53 @@ export  class MultiSelect extends BaseComponent<Props> {
                     })
                 }
             </View>
+        );
+    }
+}
+
+
+export class MultiSelectItem extends BaseComponent<Props> {
+    constructor(props) {
+        super(props);
+        this.value = props.value;
+        this.icon = props.icon;
+        this.isSelect = props.isSelect;
+        this.name = props.name;
+        this.iconStyles = props.iconStyles;
+    }
+
+    _onPress = () => {
+        if (!this.isSelect) {
+            this.props.onPress(this.props.value, 'add');
+        } else {
+            this.props.onPress(this.props.value, 'move');
+        }
+    };
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isSelect: nextProps.isSelect,
+        });
+    }
+
+    render() {
+        return (
+            <TouchView
+                style={[{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }, {...this.props.style}]}
+                onPress={() => this._onPress()}
+            >
+                <Text style={[
+                    {...this.props.textStyle}, this.isSelect && {color: this.props.selectColor}]}>{this.name}</Text>
+                {
+                    this.isSelect && this.icon && (
+                        <Image source={this.icon} style={this.iconStyles}/>
+                    )
+                }
+            </TouchView>
         );
     }
 }

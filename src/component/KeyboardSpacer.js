@@ -1,5 +1,5 @@
 import {Dimensions, Keyboard, LayoutAnimation, Platform, StyleSheet, View} from 'react-native';
-import {BaseComponent} from './BaseComponent';
+import {BaseComponent} from './base/BaseComponent';
 import React from 'react';
 const styles = StyleSheet.create({
     container: {

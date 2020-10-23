@@ -1,9 +1,9 @@
 'use strict';
 import {Wheel} from 'teaset';
-import {CenterView, CustomButton, TouchView} from './Component';
-import {Colors, Constant, FontSize} from '../constant/Constant';
-import Utils from '../utils/Utils';
-import {BaseComponent} from './BaseComponent';
+import {CenterView, CustomButton, TouchView} from '../Component';
+import {Colors, Constant, FontSize} from '../../constant/Constant';
+import Utils from '../../utils/Utils';
+import {BaseComponent} from '../base/BaseComponent';
 import React from 'react';
 export class DatePicker extends BaseComponent {
     /*

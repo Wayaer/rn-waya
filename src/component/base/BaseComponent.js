@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 import {
     Dimensions,
-    PixelRatio
+    PixelRatio,
 } from 'react-native';
 
 export class BaseComponent extends Component {

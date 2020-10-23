@@ -1,10 +1,7 @@
 import React from 'react';
-
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-
-import {BaseDialog} from './BaseDialog';
-
-import {KeyboardSpacer} from './KeyboardSpacer';
+import {BaseDialog} from '../base/BaseDialog';
+import {KeyboardSpacer} from '../KeyboardSpacer';
 
 export class InputDialog extends BaseDialog {
 

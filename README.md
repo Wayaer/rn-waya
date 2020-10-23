@@ -235,13 +235,4 @@ onCancel   取消 回调
 
   
 ```   
-```
-
- react-native-fast-image `  //大图片优化
-
- react-native-syan-image-picker //图片选择
- 
- lottie-react-native 动画库
-```
-
 

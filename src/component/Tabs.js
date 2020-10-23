@@ -12,7 +12,8 @@
 * */
 import React from 'react';
 import {View} from 'react-native';
-import {BaseComponent, SegmentedBar, Utils} from '../../index';
+import {BaseComponent, Utils} from '../../index';
+import {SegmentedBar} from 'teaset';
 import {Colors, FontSize} from '../constant/Constant';
 
 export default class Tabs extends BaseComponent<Props> {
@@ -59,17 +60,17 @@ export default class Tabs extends BaseComponent<Props> {
 
         const thisProps = this.props;
 
-        const attribute = indicatorType === 'customWidth' ? {indicatorWidth:thisProps.indicatorWidth} : {};
+        const attribute = indicatorType === 'customWidth' ? {indicatorWidth: thisProps.indicatorWidth} : {};
 
         return (
-            <View style={{alignItems:'center',justifyContent:'center'}}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
                 <SegmentedBar
                     {...attribute}
-                    style={{height:this.props.height ||  Utils.getHeight(88),  backgroundColor:'rgba(0,0,0,0)'}}
+                    style={{height: this.props.height || Utils.getHeight(88), backgroundColor: 'rgba(0,0,0,0)'}}
                     justifyItem={justifyItem}
                     indicatorType={indicatorType}
                     indicatorPosition={indicatorPosition}
-                    indicatorLineColor={thisProps.activeColor ? thisProps.activeColor  : Colors.mainBlue}
+                    indicatorLineColor={thisProps.activeColor ? thisProps.activeColor : Colors.mainBlue}
                     indicatorLineWidth={thisProps.isHeader ? 0 : 2}
                     animated={animated}
                     autoScroll={autoScroll}
@@ -80,11 +81,11 @@ export default class Tabs extends BaseComponent<Props> {
                         barItems.map((item, index) => (
                             <SegmentedBar.Item
                                 key={'item' + index}
-                                titleStyle = {{
+                                titleStyle={{
                                     fontSize: thisProps.isHeader ? FontSize.textSize_18 : FontSize.textSize_16,
                                     color: thisProps.titleColor ? thisProps.titleColor : Colors.mainBlack,
                                 }}
-                                activeTitleStyle = {{
+                                activeTitleStyle={{
                                     fontSize: thisProps.isHeader ? FontSize.textSize_18 : FontSize.textSize_16,
                                     fontWeight: '700',
                                     color: thisProps.activeColor ? thisProps.activeColor : Colors.mainBlue,

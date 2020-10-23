@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Animated} from 'react-native';
 import {BaseComponent} from './BaseComponent';
-import {TouchView} from './Component';
+import {TouchView} from '../Component';
 
 
 export class BaseDialog extends BaseComponent {

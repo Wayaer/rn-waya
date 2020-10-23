@@ -7,7 +7,7 @@ import {FetchBlob} from './FetchBlob';
 import {CenterView, CustomButton} from '../component/Component';
 
 const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
-    width = NativeConstant.Screen_Width
+    width = NativeConstant.Screen_Width;
 const alertStyle = {height: height, width: width};
 const defaultDuration = 1500;
 const defaultPosition = 'center';

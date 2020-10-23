@@ -1,11 +1,8 @@
 import React from 'react';
-
 import {Animated, Text, View} from 'react-native';
-
 import {PickerView} from './PickerView';
-
-import {BaseDialog} from './BaseDialog';
-import {TouchView} from './Component';
+import {BaseDialog} from '../base/BaseDialog';
+import {TouchView} from '../Component';
 
 export class AreaPicker extends BaseDialog {
 
@@ -23,7 +20,7 @@ export class AreaPicker extends BaseDialog {
         itemSelectedColor: 0x1097D5ff,
         itemHeight: 40,
         onPickerCancel: null,
-        onPickerConfirm: null
+        onPickerConfirm: null,
     }
 
     constructor(props) {

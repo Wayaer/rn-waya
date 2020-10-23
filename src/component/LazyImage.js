@@ -1,6 +1,6 @@
 import {Animated, Easing, Image, StyleSheet, View} from 'react-native';
 import PropTypes from 'prop-types';
-import {BaseComponent} from './BaseComponent';
+import {BaseComponent} from './base/BaseComponent';
 import React from 'react';
 const styles = StyleSheet.create({
     placeholderWrapper: {

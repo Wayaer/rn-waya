@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Animated, PanResponder, View} from 'react-native';
 
-import {BaseComponent} from './BaseComponent';
+import {BaseComponent} from '../base/BaseComponent';
 
 import Svg, {LinearGradient, Rect, Stop} from 'react-native-svg';
 
@@ -25,18 +25,17 @@ export class PickerView extends BaseComponent {
         super(props);
         this.list = ['', ''].concat(props.list).concat(['', '']);
         this.colorPath = [];
-        // eslint-disable-next-line no-undef
-        let length = list.length;
+        let length = this.list.length;
         for (let i = 0; i < length; i++) {
             this.colorPath.push(new Animated.Value(i === (this.props.selectedIndex + 2) ? 1 : 0));
         }
         this.path = new Animated.Value(-props.itemHeight * this.props.selectedIndex);
         this.state = {
-            list: list,
+            list: this.list,
             selectedIndex: props.selectedIndex,
         };
         this.maxTop = 0;
-        this.maxBottom = -props.itemHeight * (list.length - 5);
+        this.maxBottom = -props.itemHeight * (this.list.length - 5);
         this.onStartShouldSetPanResponder = this.onStartShouldSetPanResponder.bind(this);
         this.onMoveShouldSetPanResponder = this.onMoveShouldSetPanResponder.bind(this);
         this.onPanResponderGrant = this.onPanResponderGrant.bind(this);
@@ -50,10 +49,9 @@ export class PickerView extends BaseComponent {
 
     shouldComponentUpdate(nextProps, nextState) {
         if (nextProps) {
-            list = ['', ''].concat(nextProps.list).concat(['', '']);
-            // eslint-disable-next-line eqeqeq
-            listChange = JSON.stringify(list) !== JSON.stringify(this.state.list);
-            indexChange = nextProps.selectedIndex !== this.state.selectedIndex;
+            const list = ['', ''].concat(nextProps.list).concat(['', '']);
+            let listChange = JSON.stringify(list) !== JSON.stringify(this.state.list);
+            let indexChange = nextProps.selectedIndex !== this.state.selectedIndex;
             if (listChange || indexChange) {
                 console.log('shouldComponentUpdate');
                 this.path.setValue(-this.props.itemHeight * nextProps.selectedIndex);

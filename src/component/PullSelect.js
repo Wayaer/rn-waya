@@ -41,7 +41,6 @@ export class PullSelect extends BaseComponent<Props> {
 
     render() {
         const isEditable = !this.props.editable && this.props.editable !== undefined;
-        const width = this.props.width ? Utils.getWidth(this.props.width) : Utils.getWidth(230);
         return (
             <View style={[
                     this.props.style && this.props.style,
