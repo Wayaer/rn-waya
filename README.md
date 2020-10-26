@@ -1,3 +1,15 @@
+# rn-waya
+
+## 部分方法 Utils
+[参考Utils文件](src/utils/Utils.js)
+
+## 路由跳转 NavigationTools
+[参考NavigationTools文件](src/utils/NavigationTools.js)
+
+## 本地存储 StorageTools
+[参考StorageTools文件](src/utils/StorageTools.js)
+
+
 
 时间选择器 
 ```html
@@ -61,14 +73,4 @@ onCancel   取消 回调
 
         })
 ```    
-
-
-##部分方法 Utils
-[参考Utils文件](src/utils/Utils.js)
-
-##路由跳转 NavigationTools
-[参考NavigationTools文件](src/utils/NavigationTools.js)
-
-##本地存储 StorageTools
-[参考StorageTools文件](src/utils/StorageTools.js)
 
