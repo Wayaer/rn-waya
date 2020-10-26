@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {PickerView} from './PickerView';
 import {BaseDialog} from '../base/BaseDialog';
-import Utils from '../../utils/Utils';
+import {Utils} from '../../utils/Utils';
 import {TouchView} from '../Component';
 
 

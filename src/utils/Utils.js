@@ -9,7 +9,7 @@ const alertStyle = {height: height, width: width};
 const defaultDuration = 1500;
 const defaultPosition = 'center';
 
-export default class Utils {
+export class Utils {
 
     /**
      * log信息打印

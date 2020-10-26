@@ -1,7 +1,7 @@
 'use strict';
 import {Image, ImageBackground, Animated, Text, TouchableOpacity, View} from 'react-native';
 import {Constant} from '../constant/Constant';
-import Utils from '../utils/Utils';
+import {Utils} from '../utils/Utils';
 import {BaseComponent} from './base/BaseComponent';
 import React from 'react';
 

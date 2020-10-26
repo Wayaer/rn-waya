@@ -1,9 +1,9 @@
 import {AsyncStorage} from '../../index';
-import Storage from './Storage';
+import {Storage} from './Storage';
 
 let storage;
 
-export default class StorageTools {
+export class StorageTools {
     /**
      * 本地持久化储存信息
      * @returns {Storage}

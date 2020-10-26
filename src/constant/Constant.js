@@ -1,10 +1,7 @@
 'use strict';
-import {Platform} from 'react-native';
-import {NativeConstant} from 'rn-curiosity';
+import {Dimensions, Platform} from 'react-native';
 
-const height = NativeConstant.ActualScreen_Height, scale = NativeConstant.Screen_Scale,
-    width = NativeConstant.Screen_Width;
-
+const {height, width, scale} = Dimensions.get('window');
 export const FontSize = { //默认大小 14
     textSize_7: 7,
     textSize_8: 8,
@@ -85,7 +82,9 @@ export class Fit {
                 return true;
             } else if (y > 2400 && y < 2560) {//2k 16:9
                 return false;
-            } else {return y > 2560 && y < 3300;}
+            } else {
+                return y > 2560 && y < 3300;
+            }
         } else if (Platform.OS === 'ios') {
             if (y < 1400) {//4.7寸 16:9
                 return false;
@@ -102,7 +101,6 @@ export class Fit {
 }
 
 
-
 export const Constant = {
 
     // 系统是iOS
@@ -115,8 +113,6 @@ export const Constant = {
     Screen_Width: width,
     // 获取屏幕分辨率
     Screen_Scale: scale,
-    //状态栏高度
-    CurrentHeight: NativeConstant.StatusBarHeight,
     //阴影效果
     ShadowStyle: {
         shadowColor: '#000',//ios阴影颜色

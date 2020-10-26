@@ -1,6 +1,6 @@
 {
   "name": "rn-waya",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React Native rn-waya",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/rn-waya",
@@ -12,7 +12,7 @@
     "useNpm": "npx nrm use npm",
     "useTaoBao": "npx nrm use taobao",
     "npmPublish": "npm publish",
-    "npmUnPublish": "npm unpublish rn-waya@0.2.1",
+    "npmUnPublish": "npm unpublish rn-waya@0.2.2",
     "npmDeprecate": "npm deprecate rn-waya@0.0.1 Please update the version for rn-waya"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "teaset": "^0.7.4"
   },
   "devDependencies": {
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "^0.63.3"
   },

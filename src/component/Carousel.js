@@ -14,7 +14,7 @@ import {Animated, Easing, View} from 'react-native';
 import {Colors} from '../constant/Constant';
 import {BaseComponent} from './base/BaseComponent';
 
-export default class Carousel extends BaseComponent {
+export class Carousel extends BaseComponent {
     static defaultProps = {
         enableAnimation: true,
     };

@@ -16,7 +16,7 @@ export class ExpiredError {
     }
 }
 
-export default class Storage {
+export class Storage {
     constructor(options = {}) {
         this._SIZE = options.size || 1000;   // maximum capacity
         this.sync = options.sync || {};      // remote sync method

@@ -16,7 +16,7 @@ import {BaseComponent, Utils} from '../../index';
 import {SegmentedBar} from 'teaset';
 import {Colors, FontSize} from '../constant/Constant';
 
-export default class Tabs extends BaseComponent<Props> {
+export class Tabs extends BaseComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {

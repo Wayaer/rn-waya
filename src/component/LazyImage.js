@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class LazyImage extends BaseComponent {
+export class LazyImage extends BaseComponent {
     static propTypes = {
         /**
          * Image source

@@ -3,6 +3,7 @@ import {Platform, processColor, requireNativeComponent, StyleSheet, View} from '
 import {TouchView} from './Component';
 import {BaseComponent} from './base/BaseComponent';
 import React from 'react';
+
 const NativeLinearGradient = requireNativeComponent('LinearGradient', null);
 const convertPoint = (name, point) => {
     if (Array.isArray(point)) {
