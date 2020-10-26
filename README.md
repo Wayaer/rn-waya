@@ -1,15 +1,4 @@
 
-
-```
-  yarn add rn-fetch-blob
-         
-  yarn add rn-curiosity       
-
-  yarn add @react-native-community/async-storage 
-
-```
-
-
 时间选择器 
 ```html
  <DatePicker/>
@@ -77,162 +66,17 @@ onCancel   取消 回调
 ```    
 
 
-#方法 Utils
+##部分方法 Utils
 [参考Utils文件](src/utils/Utils.js)
 
-```
-  使用方法
-  
-  Utils.方法名()
-  
-  Utils.sendMessageNativeToJS()
+##路由跳转 NavigationTools
+[参考Utils文件](src/utils/NavigationTools.js)
 
-```
+##本地存储 StorageTools
+[参考Utils文件](src/utils/StorageTools.js)
 
 #热更新
 
 先查阅rn-curiosity文档配置原生双端代码
 
-#JS调用热更新
-
-```
-  调用方式
-  参数传递见方法注解，bundle 本地储存地址均为固定地址，不可改变
-
-  Utils.uploadBundle()  //bundle版本校验及下载解压，
-  
-  Utils.downloadBundleZipWithUnZip()  //bundle 下载和解压，具体的版本校验自行判断
-
-```
-[参考Utils文件uploadBundle方法和downloadBundleZipWithUnZip方法](src/utils/Utils.js)
-```
-    /**
-     * 此方法包含 校验bundle版本号匹配问题已经下载和解压
-     * 版本号必须为int类型，字段key 不可改变
-     * netVersion={
-     *     androidBundleVersion:0,
-     *     androidVersion:1,
-     *     iosBundleVersion:0,
-     *     iosVersion:1,
-     *   }
-     * OSS目录文件 服务器文件下载目录,目录不可更改
-     *
-     * ├── OSS
-     *      ├──android
-     *            ├──bundle
-     *                 ├── 0  (版本号)
-     *                     └──bundle.zip
-     *                 ├── 1  (版本号)
-     *                     └──bundle.zip
-     *                 ├── 2  (版本号)
-     *                     └──bundle.zip
-     *            ├──apk
-     *                 ├── 0  (版本号)
-     *                     └──0.apk
-     *                 ├── 1  (版本号)
-     *                     └──1.apk
-     *                 ├── 2  (版本号)
-     *                     └──2.apk
-     *       ├──ios
-     *            ├──bundle
-     *                 ├── 0  (版本号)
-     *                     └──bundle.zip
-     *                 ├── 1  (版本号)
-     *                     └──bundle.zip
-     *                 ├── 2  (版本号)
-     *                     └──bundle.zip
-     *            ├──ipa     //分发平台版本号
-     *                 ├── 0  (版本号)
-     *                     └──0.apk
-     *                 ├── 1  (版本号)
-     *                     └──1.apk
-     *                 ├── 2  (版本号)
-     *                     └──2.apk
-     *            ├──store_ipa  //官方版本号
-     *                 ├── 0  (版本号)
-     *                     └──0.apk
-     *                 ├── 1  (版本号)
-     *                     └──1.apk
-     *                 ├── 2  (版本号)
-     *                     └──2.apk
-     *
-     * @param netVersion
-     * @param localAndroidBundleVersion    可在package.json中加入两个字段 并从中获取
-     * @param localIosBundleVersion        可在package.json中加入两个字段 并从中获取
-     * @param OSSUrl
-     * @param bundleUnZip
-     */
-     static uploadBundle(netVersion, localAndroidBundleVersion, localIosBundleVersion, OSSUrl, bundleUnZip) {
-       if (this.checkNumber(netVersion.androidBundleVersion) &&
-         this.checkNumber(netVersion.androidVersion) &&
-         this.checkNumber(netVersion.iosBundleVersion) &&
-         this.checkNumber(netVersion.iosVersion) &&
-         this.checkNumber(localAndroidBundleVersion) &&
-         this.checkNumber(localIosBundleVersion)) {
-         const localVersionCode = Constant.VersionCode;
-         if (Constant.Android) {
-           if ((netVersion.androidVersion) === localVersionCode && (netVersion.androidBundleVersion) > localAndroidBundleVersion) {
-             Utils.downloadBundleZipWithUnZip(OSSUrl + 'android/bundle/' + (netVersion.androidBundleVersion) + '/bundle.zip', (percent) => {
-             }, () => {
-               bundleUnZip && bundleUnZip();
-             });
-           } else if ((netVersion.iosVersion) === localVersionCode && (netVersion.iosBundleVersion) < localAndroidBundleVersion) {
-             Utils.deleteBundle();
-           }
-         } else if (Constant.IOS) {
-           if ((netVersion.iosVersion) === localVersionCode && (netVersion.iosBundleVersion) > localIosBundleVersion) {
-             Utils.downloadBundleZipWithUnZip(OSSUrl + 'android/bundle/' + (netVersion.androidBundleVersion) + '/bundle.zip', (percent) => {
-             }, () => {
-               bundleUnZip && bundleUnZip();
-             });
-           } else if ((netVersion.iosVersion) === localVersionCode && (netVersion.iosBundleVersion) < localIosBundleVersion) {
-             this.deleteBundle();
-           }
-         }
-       } else {
-         return console.error('version type error (not number)');
-       }
-     }
-     
-     
-     
-     
-   /**
-    * 下载并解压bundle文件,此方法只可以下载和解压至固定位置，
-    * 固定位置
-    * android:/data/user/0/{packageName}/files/
-    * ios:/var/mobile/Containers/Data/Application/{186EE408-3B95-4A09-B8E2-E1C14B333E2B}/Library/
-    *
-    * @param url
-    * @param callbackPercent
-    * @param callbackUnzip
-    */
-   static downloadBundleZipWithUnZip(url, callbackPercent, callbackUnzip) {
-     if (Constant.IOS) {
-       const path = Constant.LibraryDirectory + '/';
-       FetchBlob.downloadFile(url, path, 'bundle.zip', (percent) => {
-         return callbackPercent(percent);
-       }, () => {
-         NativeUtils.unZipFile(path + 'bundle.zip', (zip) => {
-           return callbackUnzip(zip);
-         });
-       }, (fail) => {
-         return console.error('download Fail');
-       });
-     } else if (Constant.Android) {
-       const path = Constant.FilesDir + '/';
-       FetchBlob.downloadFile(url, path, 'bundle.zip', (percent) => {
-         return callbackPercent(percent);
-       }, () => {
-         NativeUtils.unZipFile(path + 'bundle.zip', (zip) => {
-           return callbackUnzip(zip);
-         });
-       }, (fail) => {
-         return console.error('download Fail');
-       });
-     }
-   }
-
-  
-```   
 

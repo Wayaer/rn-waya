@@ -1,12 +1,11 @@
-// eslint-disable-next-line no-unused-vars
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import {
     Dimensions,
     PixelRatio,
 } from 'react-native';
 
-export class BaseComponent extends Component {
+export class BaseComponent extends PureComponent {
 
     mScreenWidth = Dimensions.get('window').width;
 

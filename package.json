@@ -1,6 +1,6 @@
 {
   "name": "rn-waya",
-  "version": "0.1.16",
+  "version": "0.2.2",
   "description": "React Native rn-waya",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/rn-waya",
@@ -12,21 +12,15 @@
     "useNpm": "npx nrm use npm",
     "useTaoBao": "npx nrm use taobao",
     "npmPublish": "npm publish",
-    "npmUnPublish": "npm unpublish rn-waya@0.1.15",
+    "npmUnPublish": "npm unpublish rn-waya@0.2.1",
     "npmDeprecate": "npm deprecate rn-waya@0.0.1 Please update the version for rn-waya"
   },
   "dependencies": {
-
-    "@react-native-community/async-storage": "^1.12.1",
-    "eslint": "^7.11.0",
-    "prop-types": "^15.7.2",
+    "react-navigation": "^4.4.2",
     "react-native-svg": "^9.13.6",
-    "teaset": "^0.7.4",
-    "rn-curiosity": "^0.4.2",
-    "rn-fetch-blob": "^0.12.0"
+    "teaset": "^0.7.4"
   },
   "devDependencies": {
-    "@react-native-community/eslint-config": "^0.0.5",
     "react": "16.13.1",
     "react-native": "^0.63.3"
   },

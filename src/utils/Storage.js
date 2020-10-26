@@ -353,5 +353,4 @@ export default class Storage {
             return this.getBatchData(ids.map(id => ({key, id, syncInBackground: options.syncInBackground})));
         });
     }
-
 }

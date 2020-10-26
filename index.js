@@ -1,13 +1,11 @@
 'use strict';
-//第三方
-import RNFetchBlob from 'rn-fetch-blob';
-import AsyncStorage from '@react-native-community/async-storage';
-import Utils from './src/utils/Utils';
 
-export * from 'rn-curiosity';
 export * from 'react-native';
-export * from './src/utils/FetchBlob';
 export * from './src/component/Component';
+export * from './src/utils/NavigationTools';
+export * from './src/utils/Storage';
+export * from './src/utils/StorageTools';
+export * from './src/utils/Utils';
 export * from './src/constant/Constant';
 export * from './src/component/Bar';
 export * from './src/component/picker/DatePicker';
@@ -28,10 +26,3 @@ export * from './src/component/LazyImage';
 export * from './src/component/MultiSelect';
 export * from './src/component/Carousel';
 export * from './src/component/Tabs';
-
-export {
-    /* curiosity */
-    AsyncStorage,
-    RNFetchBlob,
-    Utils,
-};
