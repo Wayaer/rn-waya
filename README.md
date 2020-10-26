@@ -38,16 +38,13 @@
  ```
 
  
- 
-事件
+
 ```
 onSure     确定 回调
 
 onCancel   取消 回调
 ```
 
-
-例
 
 ```
    Utils.alertPicker({
@@ -70,13 +67,8 @@ onCancel   取消 回调
 [参考Utils文件](src/utils/Utils.js)
 
 ##路由跳转 NavigationTools
-[参考Utils文件](src/utils/NavigationTools.js)
+[参考NavigationTools文件](src/utils/NavigationTools.js)
 
 ##本地存储 StorageTools
-[参考Utils文件](src/utils/StorageTools.js)
-
-#热更新
-
-先查阅rn-curiosity文档配置原生双端代码
-
+[参考StorageTools文件](src/utils/StorageTools.js)
 
