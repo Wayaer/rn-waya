@@ -14,12 +14,12 @@ const defaultAnimation = {
     create: {
         duration: 300,
         type: LayoutAnimation.Types.easeInEaseOut,
-        property: LayoutAnimation.Properties.opacity
+        property: LayoutAnimation.Properties.opacity,
     },
     update: {
         type: LayoutAnimation.Types.spring,
-        springDamping: 200
-    }
+        springDamping: 200,
+    },
 };
 
 export class KeyboardSpacer extends BaseComponent {
@@ -33,7 +33,7 @@ export class KeyboardSpacer extends BaseComponent {
         super(props, context);
         this.state = {
             keyboardSpace: 0,
-            isKeyboardOpened: false
+            isKeyboardOpened: false,
         };
         this._listeners = null;
         this.updateKeyboardSpace = this.updateKeyboardSpace.bind(this);
@@ -45,7 +45,7 @@ export class KeyboardSpacer extends BaseComponent {
         const resetListener = Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide';
         this._listeners = [
             Keyboard.addListener(updateListener, this.updateKeyboardSpace),
-            Keyboard.addListener(resetListener, this.resetKeyboardSpace)
+            Keyboard.addListener(resetListener, this.resetKeyboardSpace),
         ];
     }
 
@@ -76,7 +76,7 @@ export class KeyboardSpacer extends BaseComponent {
         const keyboardSpace = (screenHeight - event.endCoordinates.screenY) + this.props.topSpacing;
         this.setState({
             keyboardSpace,
-            isKeyboardOpened: true
+            isKeyboardOpened: true,
         }, this.props.onToggle(true, keyboardSpace));
     }
 
@@ -93,7 +93,7 @@ export class KeyboardSpacer extends BaseComponent {
 
         this.setState({
             keyboardSpace: 0,
-            isKeyboardOpened: false
+            isKeyboardOpened: false,
         }, this.props.onToggle(false, 0));
     }
 

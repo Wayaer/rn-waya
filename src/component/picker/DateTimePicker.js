@@ -30,7 +30,7 @@ export class DateTimePicker extends BaseDialog {
 
         HH: true,
         mm: true,
-        ss: false
+        ss: false,
     }
 
     constructor(props) {
@@ -40,7 +40,6 @@ export class DateTimePicker extends BaseDialog {
 
 
     getDateList() {
-        console.log(this.props)
         let unit = this.props.unit;
         let years = [];
         let months = [];
@@ -128,15 +127,14 @@ export class DateTimePicker extends BaseDialog {
         }
 
 
-        let data = {
+        return {
             pickerData: pickerData,
             selectedIndex: selectedIndex,
         };
-        return data;
     }
 
     _getContentPosition() {
-        return {justifyContent: 'flex-end', alignItems: 'center'}
+        return {justifyContent: 'flex-end', alignItems: 'center'};
     }
 
     renderPicker() {
@@ -150,13 +148,12 @@ export class DateTimePicker extends BaseDialog {
                     onPickerSelected={(toValue) => {
                         //是否联动的实现位置
                         this.props.selectedValue[pickerId] = toValue;
-                        console.log('====')
                         this.setState({...this.getDateList()});
                     }}
                     selectedIndex={this.state.selectedIndex[pickerId]}
                     fontSize={this.getSize(14)}
                     itemWidth={this.mScreenWidth / this.state.pickerData.length}
-                    itemHeight={this.props.itemHeight}/>
+                    itemHeight={this.props.itemHeight}/>;
             }
         });
     }
@@ -174,14 +171,14 @@ export class DateTimePicker extends BaseDialog {
                 height: this.props.itemHeight * 5 + this.getSize(15),
                 flexDirection: 'row',
                 position: 'absolute',
-                bottom: 0
+                bottom: 0,
             }}>
                 {this.renderPicker()}
             </View>
             <View style={{
                 width: this.mScreenWidth, height: this.getSize(44),
                 backgroundColor: '#ffffff', flexDirection: 'row',
-                justifyContent: 'space-between', position: 'absolute', top: 0
+                justifyContent: 'space-between', position: 'absolute', top: 0,
             }}>
                 <TouchView
                     onPress={() => {
@@ -191,12 +188,12 @@ export class DateTimePicker extends BaseDialog {
                         width: this.getSize(60),
                         height: this.getSize(44),
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
                     }}>
                     <Text style={{
                         fontSize: this.props.cancelTextSize,
                         fontWeight: '400',
-                        color: this.props.cancelTextColor
+                        color: this.props.cancelTextColor,
                     }}>{this.props.cancelText}</Text>
                 </TouchView>
                 <TouchView
@@ -207,16 +204,16 @@ export class DateTimePicker extends BaseDialog {
                         width: this.getSize(60),
                         height: this.getSize(44),
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
                     }}>
                     <Text style={{
                         fontSize: this.props.confirmTextSize,
                         fontWeight: '400',
-                        color: this.props.confirmTextColor
+                        color: this.props.confirmTextColor,
                     }}>{this.props.confirmText}</Text>
                 </TouchView>
             </View>
-        </View>
+        </View>;
     }
 }
 

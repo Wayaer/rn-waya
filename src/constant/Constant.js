@@ -65,6 +65,7 @@ export const Colors = {
     white30: '#ffffff30',
     black30: '#00000030',
     black10: '#00000010',
+    gray153153: '#999999',
 };
 
 export class Fit {

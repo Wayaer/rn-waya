@@ -242,14 +242,14 @@ export class PickerView extends BaseComponent {
             key={index}
             style={{
                 width: this.props.itemWidth, height: this.props.itemHeight,
-                justifyContent: 'center', alignItems: 'center'
+                justifyContent: 'center', alignItems: 'center',
             }}>
             <Animated.Text style={{
                 color: this.colorPath[index].interpolate({
                     inputRange: [0, 1],
-                    outputRange: [this.props.itemTextColor, this.props.itemSelectedColor]
+                    outputRange: [this.props.itemTextColor, this.props.itemSelectedColor],
                 }), fontSize: this.props.fontSize ? this.props.fontSize : this.getSize(20),
-                backgroundColor: 'transparent', fontWeight: 'normal'
+                backgroundColor: 'transparent', fontWeight: 'normal',
             }}>{item}</Animated.Text>
         </View>
     }
@@ -257,7 +257,7 @@ export class PickerView extends BaseComponent {
     render() {
         return <View style={{
             width: this.props.itemWidth, height: this.props.itemHeight * 5 + this.getSize(15),
-            backgroundColor: '#ffffff'
+            backgroundColor: '#ffffff',
         }}>
             <View
                 ref={ref => this.ref = ref}
@@ -266,15 +266,15 @@ export class PickerView extends BaseComponent {
                     overflow: 'hidden',
                     width: this.props.itemWidth,
                     height: this.props.itemHeight * 5 + this.getSize(15),
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
                 }}>
                 <Animated.View
                     style={{
                         transform: [
                             {
-                                translateY: this.path
-                            }
-                        ]
+                                translateY: this.path,
+                            },
+                        ],
                     }}
                 >
                     {this.renderList()}
@@ -284,14 +284,14 @@ export class PickerView extends BaseComponent {
                     width: this.props.itemWidth,
                     height: this.mOnePixel,
                     top: this.props.itemHeight * 4 / 2,
-                    backgroundColor: '#E8EEF0'
+                    backgroundColor: '#E8EEF0',
                 }}/>
                 <View style={{
                     position: 'absolute',
                     width: this.props.itemWidth,
                     height: this.mOnePixel,
                     top: this.props.itemHeight * 6 / 2,
-                    backgroundColor: '#E8EEF0'
+                    backgroundColor: '#E8EEF0',
                 }}/>
                 <Svg
                     onStartShouldSetResponder={() => {
@@ -347,10 +347,10 @@ export class PickerView extends BaseComponent {
                     height: this.getSize(15),
                     bottom: 0,
                     backgroundColor: '#ffffff',
-                    position: 'absolute'
+                    position: 'absolute',
                 }}/>
             </View>
 
-        </View>
+        </View>;
     }
 }

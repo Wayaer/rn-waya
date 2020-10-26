@@ -34,8 +34,8 @@ export default class Tabs extends BaseComponent<Props> {
     componentWillReceiveProps(nextProps) {
         if (nextProps.activeIndex !== this.state.activeIndex) {
             this.setState({
-                activeIndex: nextProps.activeIndex
-            })
+                activeIndex: nextProps.activeIndex,
+            });
         }
 
     }
@@ -44,9 +44,9 @@ export default class Tabs extends BaseComponent<Props> {
         const thisState = this.state;
         if (index !== thisState.activeIndex) {
             this.setState({
-                activeIndex: index
+                activeIndex: index,
             }, () => {
-                this.props.tabChange(thisState.barItems[index])
+                this.props.tabChange(thisState.barItems[index]);
             });
             if (this.refs.carousel) {
                 this.refs.carousel.scrollToPage(index, false);
@@ -96,6 +96,6 @@ export default class Tabs extends BaseComponent<Props> {
                 </SegmentedBar>
             </View>
 
-        )
+        );
     }
 }

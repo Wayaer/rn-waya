@@ -11,7 +11,7 @@ export class BaseDialog extends BaseComponent {
         removeSubviews: true,   //隐藏时，是否回收前景控件，false 更流畅，true：初始化更快，dismiss后就回收
         coverClickable: true,
         onCoverPress: null,
-        showAnimationType: 'spring'
+        showAnimationType: 'spring',
     }
 
     _path = new Animated.Value(0);
@@ -20,8 +20,8 @@ export class BaseDialog extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
-            _isShow: false
-        }
+            _isShow: false,
+        };
     }
 
     isShowing() {
@@ -60,11 +60,11 @@ export class BaseDialog extends BaseComponent {
                 translateY: path.interpolate(
                     {
                         inputRange: [0, 0.5, 1],
-                        outputRange: [this.getSize(200), this.getSize(200), 0]
+                        outputRange: [this.getSize(200), this.getSize(200), 0],
                     }
-                )
-            }
-        ]
+                ),
+            },
+        ];
     }
 
 
@@ -72,7 +72,7 @@ export class BaseDialog extends BaseComponent {
      * 前景位置
      */
     _getContentPosition() {
-        return {justifyContent: 'center', alignItems: 'center'}
+        return {justifyContent: 'center', alignItems: 'center'};
     }
 
     /**
@@ -89,18 +89,18 @@ export class BaseDialog extends BaseComponent {
                     position: 'absolute', left: 0, right: 0, top: 0, bottom: 0,
                     backgroundColor: 0x00000050, opacity: this._path.interpolate({
                         inputRange: [0, 0.5, 1],
-                        outputRange: [0, 1, 1]
+                        outputRange: [0, 1, 1],
                     }), ...this._getContentPosition(),
                     transform: [
                         {
                             translateX: this._path.interpolate(
                                 {
                                     inputRange: [0, 0.01, 1],
-                                    outputRange: [-this.mScreenWidth, 0, 0]
+                                    outputRange: [-this.mScreenWidth, 0, 0],
                                 }
-                            )
-                        }
-                    ]
+                            ),
+                        },
+                    ],
                 }}>
                 <TouchView
                     onPress={() => {
@@ -116,7 +116,7 @@ export class BaseDialog extends BaseComponent {
                 }}>
                     {this.renderContent()}
                 </Animated.View>
-            </Animated.View>
+            </Animated.View>;
         } else {
             return null;
         }

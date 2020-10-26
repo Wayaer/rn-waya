@@ -350,8 +350,7 @@ export default class Storage {
     getAllDataForKey(key, options) {
         options = Object.assign({syncInBackground: true}, options);
         return this.getIdsForKey(key).then(ids => {
-            let querys = ids.map(id => ({key, id, syncInBackground: options.syncInBackground}));
-            return this.getBatchData(querys);
+            return this.getBatchData(ids.map(id => ({key, id, syncInBackground: options.syncInBackground})));
         });
     }
 

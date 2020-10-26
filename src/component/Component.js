@@ -1,5 +1,5 @@
 'use strict';
-import {Image, ImageBackground,Animated, Text, TouchableOpacity, View} from 'react-native';
+import {Image, ImageBackground, Animated, Text, TouchableOpacity, View} from 'react-native';
 import {Constant} from '../constant/Constant';
 import Utils from '../utils/Utils';
 import {BaseComponent} from './base/BaseComponent';
@@ -228,19 +228,19 @@ export class ToastComponent extends BaseComponent {
     constructor(props) {
         super(props);
         this.state = {
-            toastVisiable: false,
-            toastText: ''
-        }
+            toastVisible: false,
+            toastText: '',
+        };
     }
 
     show(message) {
         this.timeoutId && clearTimeout(this.timeoutId);
-        this.opacity.setValue(0)
-        this.setState({toastText: message, toastVisiable: true});
+        this.opacity.setValue(0);
+        this.setState({toastText: message, toastVisible: true});
         Animated.timing(this.opacity, {toValue: 1, duration: 200}).start();
         this.timeoutId = setTimeout(() => {
             Animated.timing(this.opacity, {toValue: 0, duration: 200}).start(() => {
-                this.setState({toastVisiable: false});
+                this.setState({toastVisible: false});
             });
         }, this.props.duration);
     }
@@ -250,7 +250,7 @@ export class ToastComponent extends BaseComponent {
     }
 
     render() {
-        if (this.state.toastVisiable) {
+        if (this.state.toastVisible) {
             return <Animated.View
                 onLayout={(e) => {
                     //如果依靠父容器来定位Toast居中，
@@ -261,7 +261,7 @@ export class ToastComponent extends BaseComponent {
                     opacity: this.opacity, alignItems: 'center',
                     position: 'absolute',
                     top: this.mScreenHeight - this.getSize(300),
-                    left: this.leftPath
+                    left: this.leftPath,
                 }}>
                 <View
                     style={{
@@ -273,10 +273,10 @@ export class ToastComponent extends BaseComponent {
                     <Text style={{
                         color: this.props.textColor,
                         fontSize: this.props.fontSize,
-                        lineHeight: this.props.lineHeight
+                        lineHeight: this.props.lineHeight,
                     }}>{this.state.toastText}</Text>
                 </View>
-            </Animated.View>
+            </Animated.View>;
         } else {
             return null;
         }

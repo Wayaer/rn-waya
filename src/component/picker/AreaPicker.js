@@ -28,12 +28,12 @@ export class AreaPicker extends BaseDialog {
         this.state = {
             areaData: this.getAreaData(),
             path: new Animated.Value(0),
-            ...this.formatPickerData(props.selectedValue)
+            ...this.formatPickerData(props.selectedValue),
         };
     }
 
     _getContentPosition() {
-        return {justifyContent: 'flex-end', alignItems: 'center'}
+        return {justifyContent: 'flex-end', alignItems: 'center'};
     }
 
     getAreaData() {
@@ -63,7 +63,7 @@ export class AreaPicker extends BaseDialog {
         let areaData = this.getAreaData();
         areaData.map((pitem) => {
             for (let pname in pitem) {
-                province.push(pname)
+                province.push(pname);
                 if (pname === this.props.selectedValue[0]) {
                     pitem[pname].map(citem => {
                         for (let cname in citem) {
@@ -93,7 +93,7 @@ export class AreaPicker extends BaseDialog {
         }
 
         return {
-            pickerData: [province, city, county], visible: true
+            pickerData: [province, city, county], visible: true,
         };
     }
 
@@ -121,7 +121,7 @@ export class AreaPicker extends BaseDialog {
                     selectedIndex={selectedIndex}
                     fontSize={this.getSize(14)}
                     itemWidth={this.mScreenWidth / this.state.pickerData.length}
-                    itemHeight={this.props.itemHeight}/>
+                    itemHeight={this.props.itemHeight}/>;
             } else {
                 return null;
             }
@@ -132,21 +132,21 @@ export class AreaPicker extends BaseDialog {
         return <View
             style={{
                 height: this.props.itemHeight * 5 + this.getSize(15) + this.getSize(44), width: this.mScreenWidth,
-                backgroundColor: '#ffffff'
+                backgroundColor: '#ffffff',
             }}>
             <View style={{
                 width: this.mScreenWidth,
                 height: this.props.itemHeight * 5 + this.getSize(15),
                 flexDirection: 'row',
                 position: 'absolute',
-                bottom: 0
+                bottom: 0,
             }}>
                 {this.renderPicker()}
             </View>
             <View style={{
                 width: this.mScreenWidth, height: this.getSize(44),
                 backgroundColor: '#ffffff', flexDirection: 'row',
-                justifyContent: 'space-between', position: 'absolute', top: 0
+                justifyContent: 'space-between', position: 'absolute', top: 0,
             }}>
                 <TouchView
                     onPress={() => {
@@ -158,12 +158,12 @@ export class AreaPicker extends BaseDialog {
                         width: this.getSize(60),
                         height: this.getSize(44),
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
                     }}>
                     <Text style={{
                         fontSize: this.props.cancelTextSize,
                         fontWeight: '400',
-                        color: this.props.cancelTextColor
+                        color: this.props.cancelTextColor,
                     }}>{this.props.cancelText}</Text>
                 </TouchView>
                 <TouchView
@@ -176,16 +176,16 @@ export class AreaPicker extends BaseDialog {
                         width: this.getSize(60),
                         height: this.getSize(44),
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
                     }}>
                     <Text style={{
                         fontSize: this.props.confirmTextSize,
                         fontWeight: '400',
-                        color: this.props.confirmTextColor
+                        color: this.props.confirmTextColor,
                     }}>{this.props.confirmText}</Text>
                 </TouchView>
             </View>
-        </View>
+        </View>;
     }
 }
 

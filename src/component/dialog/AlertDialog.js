@@ -14,7 +14,7 @@ export class AlertDialog extends BaseDialog {
         positiveText: 'ok',
         positiveColor: '#1097D5',
         positiveSize: 16,
-        onPress: null
+        onPress: null,
     }
 
     constructor(props) {
@@ -22,17 +22,17 @@ export class AlertDialog extends BaseDialog {
     }
 
     getContentPosition() {
-        return {justifyContent: 'center', alignItems: 'center'}
+        return {justifyContent: 'center', alignItems: 'center'};
     }
 
     renderContent() {
         return <View style={{
             height: this.getSize(150), width: this.getSize(307),
-            backgroundColor: '#ffffff', borderRadius: this.getSize(6)
+            backgroundColor: '#ffffff', borderRadius: this.getSize(6),
         }}>
             <View style={{
                 width: this.getSize(307), flex: 1, paddingLeft: this.getSize(15), paddingRight: this.getSize(15),
-                justifyContent: 'center', alignItems: 'center'
+                justifyContent: 'center', alignItems: 'center',
             }}>
                 <Text style={{
                     fontSize: this.props.messageTextSize, fontWeight: '100', color: this.props.messageTextColor,
@@ -57,14 +57,14 @@ export class AlertDialog extends BaseDialog {
                     }}
                     style={{
                         flex: 1, height: this.getSize(45),
-                        alignItems: 'center', justifyContent: 'center'
+                        alignItems: 'center', justifyContent: 'center',
                     }}>
                     <Text style={{color: this.props.positiveColor, fontSize: this.props.positiveSize}}>
                         {this.props.positiveText}
                     </Text>
                 </TouchableOpacity>
                 <View style={{
-                    height: this.getSize(28), width: this.mOnePixel, backgroundColor: '#e6e6e6'
+                    height: this.getSize(28), width: this.mOnePixel, backgroundColor: '#e6e6e6',
                 }}/>
                 <TouchableOpacity
                     onPress={() => {
@@ -76,15 +76,15 @@ export class AlertDialog extends BaseDialog {
                     }}
                     style={{
                         flex: 1, height: this.getSize(45),
-                        alignItems: 'center', justifyContent: 'center'
+                        alignItems: 'center', justifyContent: 'center',
                     }}>
                     <Text style={{
                         color: this.props.negativeColor,
-                        fontSize: this.props.negativeSize
+                        fontSize: this.props.negativeSize,
                     }}>{this.props.negativeText}</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </View>;
     }
 
 }

@@ -12,14 +12,14 @@ export class DownloadDialog extends BaseDialog {
         actionText: '打开',
         onAction: null,
         totalTextColor: '#666666',
-        totalTextSize: 12
+        totalTextSize: 12,
     }
 
     process = new Animated.Value(0);
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {};
     }
 
     /**
@@ -43,27 +43,27 @@ export class DownloadDialog extends BaseDialog {
             }}>
             <Text style={{
                 marginTop: this.getSize(15), marginLeft: this.getSize(15),
-                color: this.props.titleColor, fontSize: this.props.titleSize
+                color: this.props.titleColor, fontSize: this.props.titleSize,
             }}>{this.props.title}</Text>
             <View style={{
                 justifyContent: 'center',
-                alignItems: 'center', marginTop: this.getSize(25)
+                alignItems: 'center', marginTop: this.getSize(25),
             }}>
                 <View style={{width: this.getSize(280), height: 4, borderRadius: 2, backgroundColor: '#d3d3d3'}}/>
                 <Animated.View style={{
                     width: this.process.interpolate({
                         inputRange: [0, 1],
-                        outputRange: [0, this.getSize(280)]
+                        outputRange: [0, this.getSize(280)],
                     }), height: 4, borderRadius: 2,
                     backgroundColor: '#1097D5',
-                    position: 'absolute', left: this.getSize((307 - 280) / 2)
+                    position: 'absolute', left: this.getSize((307 - 280) / 2),
                 }}/>
             </View>
             <Text style={{
                 paddingRight: this.getSize(12), textAlign: 'right', width: this.getSize(307),
                 marginTop: this.getSize(5), marginBottom: this.getSize(15),
                 color: this.props.totalTextColor, height: this.props.totalTextSize,
-                fontSize: this.props.totalTextSize, lineHeight: this.props.totalTextSize
+                fontSize: this.props.totalTextSize, lineHeight: this.props.totalTextSize,
             }}>
                 {this.state.total}
             </Text>
@@ -79,7 +79,7 @@ export class DownloadDialog extends BaseDialog {
                             this.dismiss(() => {
                                 this.process.setValue(0);
                                 this.props.active = false;
-                                this.props.onAction && this.props.onAction()
+                                this.props.onAction && this.props.onAction();
                             });
                         }
                     }}
@@ -90,10 +90,10 @@ export class DownloadDialog extends BaseDialog {
                     <Text style={{
                         color: '#1097D5',
                         fontSize: this.getSize(16),
-                        opacity: this.props.active ? 1 : 0.5
+                        opacity: this.props.active ? 1 : 0.5,
                     }}>{this.props.actionText}</Text>
                 </TouchableOpacity>
             </View>
-        </Animated.View>
+        </Animated.View>;
     }
 }

@@ -10,14 +10,14 @@ export class SimpleItemsDialog extends BaseDialog {
         itemStyle: {
             fontSize: 14,
             fontWeight: '400',
-            color: '#333333'
+            color: '#333333',
         },
         cancel: true,
         cancelText: '取消',
         cancelTextStyle: {
             fontSize: 14,
             fontWeight: '400',
-            color: '#999999'
+            color: '#999999',
         },
         onPress: null,
     }
@@ -27,7 +27,7 @@ export class SimpleItemsDialog extends BaseDialog {
     }
 
     getContentPosition() {
-        return {justifyContent: 'flex-end', alignItems: 'center'}
+        return {justifyContent: 'flex-end', alignItems: 'center'};
     }
 
 
@@ -54,10 +54,10 @@ export class SimpleItemsDialog extends BaseDialog {
                     bottom: 0,
                     width: this.mScreenWidth,
                     height: this.mOnePixel,
-                    backgroundColor: '#E8EEF0'
+                    backgroundColor: '#E8EEF0',
                 }}/>
-            </TouchableOpacity>
-        })
+            </TouchableOpacity>;
+        });
     }
 
     renderCancel() {
@@ -67,7 +67,7 @@ export class SimpleItemsDialog extends BaseDialog {
                 width: this.mScreenWidth,
                 height: this.getSize(49),
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
             <Text style={this.props.cancelTextStyle}>{this.props.cancelText}</Text>
             <View style={{
@@ -75,15 +75,15 @@ export class SimpleItemsDialog extends BaseDialog {
                 bottom: 0,
                 width: this.mScreenWidth,
                 height: this.mOnePixel,
-                backgroundColor: '#E8EEF0'
+                backgroundColor: '#E8EEF0',
             }}/>
-        </TouchableOpacity>
+        </TouchableOpacity>;
     }
 
     renderContent() {
         return <View style={{width: this.mScreenWidth, backgroundColor: '#ffffff'}}>
             {this.renderItems()}
             {this.props.cancel ? this.renderCancel() : null}
-        </View>
+        </View>;
     }
 }

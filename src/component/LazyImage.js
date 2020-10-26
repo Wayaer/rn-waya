@@ -2,6 +2,7 @@ import {Animated, Easing, Image, StyleSheet, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {BaseComponent} from './base/BaseComponent';
 import React from 'react';
+
 const styles = StyleSheet.create({
     placeholderWrapper: {
         ...StyleSheet.absoluteFill,
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class LazyImage extends BaseComponent {
+export default class LazyImage extends BaseComponent {
     static propTypes = {
         /**
          * Image source
@@ -96,5 +97,3 @@ class LazyImage extends BaseComponent {
         );
     }
 }
-
-export default LazyImage;

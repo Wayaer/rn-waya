@@ -15,12 +15,12 @@ export class CustomPicker extends BaseDialog {
     }
 
     getContentPosition() {
-        return {justifyContent: 'flex-end', alignItems: 'center'}
+        return {justifyContent: 'flex-end', alignItems: 'center'};
     }
 
     renderContent() {
         return <View style={{
-            width: this.mScreenWidth, flexDirection: 'row'
+            width: this.mScreenWidth, flexDirection: 'row',
         }}>
             <PickerView
                 list={this.props.list}
@@ -40,7 +40,7 @@ export class CustomPicker extends BaseDialog {
                 fontSize={this.getSize(14)}
                 itemWidth={this.mScreenWidth / 2}
                 itemHeight={this.getSize(40)}/>
-        </View>
+        </View>;
     }
 
 }

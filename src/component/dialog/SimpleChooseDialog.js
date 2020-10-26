@@ -14,7 +14,7 @@ export class SimpleChooseDialog extends BaseDialog {
         itemStyle: {
             fontSize: 14,
             fontWeight: '400',
-            color: '#333333'
+            color: '#333333',
         },
         selectColor: '#1097D5',
         normalColor: '#666666',
@@ -34,13 +34,13 @@ export class SimpleChooseDialog extends BaseDialog {
         return this.props.items.map((item, index) => {
             return <TouchableOpacity
                 onPress={() => {
-                    this.setState({seleted: index})
+                    this.setState({seleted: index});
                 }}
                 key={this.key ? item[this.key] : item}
                 style={{
                     paddingLeft: this.getSize(20), paddingRight: this.getSize(20),
                     width: this.getSize(307), height: this.getSize(49),
-                    justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row'
+                    justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'row',
                 }}>
                 <View style={{
                     width: this.props.pointSize, height: this.props.pointSize,
@@ -51,17 +51,17 @@ export class SimpleChooseDialog extends BaseDialog {
                     {this.state.seleted === index ? <View style={{
                         width: this.props.pointSize * 0.6, height: this.props.pointSize * 0.6,
                         borderRadius: this.props.pointBorderRadius * 0.6,
-                        backgroundColor: this.props.selectColor
+                        backgroundColor: this.props.selectColor,
                     }}/> : null}
                 </View>
                 <Text
                     style={[this.props.itemStyle, this.state.seleted === index ? {color: this.props.selectColor} : {}]}>{typeof item == 'string' ? item : item[this.props.itemKey]}</Text>
-            </TouchableOpacity>
-        })
+            </TouchableOpacity>;
+        });
     }
 
     getContentPosition() {
-        return {justifyContent: 'center', alignItems: 'center'}
+        return {justifyContent: 'center', alignItems: 'center'};
     }
 
     renderContent() {
@@ -70,7 +70,7 @@ export class SimpleChooseDialog extends BaseDialog {
             backgroundColor: '#ffffff',
             borderRadius: this.getSize(5),
             alignItems: 'center',
-            paddingTop: this.getSize(10)
+            paddingTop: this.getSize(10),
         }}>
             {this.renderItems()}
             <TouchableOpacity
@@ -89,15 +89,15 @@ export class SimpleChooseDialog extends BaseDialog {
                     justifyContent: 'center',
                     alignItems: 'center',
                     marginTop: this.getSize(13),
-                    marginBottom: this.getSize(20)
+                    marginBottom: this.getSize(20),
                 }}>
                 <Text style={{
                     color: this.props.confirmTextColor,
                     fontSize: this.getSize(16),
-                    fontWeight: '400'
+                    fontWeight: '400',
                 }}>{this.props.confirmText}</Text>
             </TouchableOpacity>
-        </View>
+        </View>;
     }
 
 }
