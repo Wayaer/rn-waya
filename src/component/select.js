@@ -6,7 +6,7 @@
 * */
 import React from 'react';
 import {Image, View, Text} from 'react-native';
-import {BaseComponent, TouchView, UT} from 'index';
+import {BaseComponent, TouchView, UT} from './../../index';
 import {Select} from 'teaset';
 
 export class MultiSelect extends BaseComponent<Props> {

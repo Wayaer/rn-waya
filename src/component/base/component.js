@@ -10,7 +10,7 @@ import {
     Easing,
     LayoutAnimation, Platform, Keyboard, Dimensions
 } from 'react-native';
-import {UT, BaseComponent, Constant} from 'index';
+import {UT, BaseComponent, Constant} from './../../../index';
 import React from 'react';
 import PropTypes from "prop-types";
 

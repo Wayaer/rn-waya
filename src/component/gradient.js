@@ -1,6 +1,6 @@
 'use strict';
 import {Platform, processColor, requireNativeComponent, StyleSheet, View} from 'react-native';
-import {BaseComponent, TouchView} from 'index';
+import {BaseComponent, TouchView} from './../../index';
 import React from 'react';
 
 const NativeLinearGradient = requireNativeComponent('LinearGradient', null);

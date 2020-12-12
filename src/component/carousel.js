@@ -11,8 +11,7 @@
 
 import React from 'react';
 import {Animated, Easing, View} from 'react-native';
-import {Colors} from '../constant/constant';
-import {BaseComponent} from "./base/base";
+import {BaseComponent, Colors} from './../../index';
 
 export class Carousel extends BaseComponent {
     static defaultProps = {

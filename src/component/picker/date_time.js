@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {UT, TouchView, PickerView, BaseDialog} from 'index';
+import {UT, TouchView, PickerView, BaseDialog} from './../../../index';
 
 
 export class DateTimePicker extends BaseDialog {
@@ -137,7 +137,7 @@ export class DateTimePicker extends BaseDialog {
     renderPicker() {
         return this.state.pickerData.map((item, pickerId) => {
             if (item) {
-                return <Picker
+                return <PickerView
                     key={'picker' + pickerId}
                     itemTextColor={this.props.itemTextColor}
                     itemSelectedColor={this.props.itemSelectedColor}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Animated, Text, TouchableOpacity, View} from 'react-native';
-import {BaseDialog} from '../base/base';
+import {BaseDialog} from './../../../index';
 
 export class DownloadDialog extends BaseDialog {
 

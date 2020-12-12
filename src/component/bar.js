@@ -1,12 +1,32 @@
 'use strict';
 import PropTypes from 'prop-types';
 import {Animated, Easing, View} from 'react-native';
-import {BaseComponent} from 'index';
+import {BaseComponent} from './../../index';
 import React from 'react';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
     INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
+
+/**
+ * 自定义 Bar
+ *
+ */
+export class BarLine extends BaseComponent {
+    render() {
+        return (
+            <ProgressBar
+                {...this.props}
+                progress={this.props.progress}
+                width={this.props.style.width || 100}
+                height={this.props.style.height || 1}
+                unfilledColor={this.props.style.unfilledColor}
+                color={this.props.style.color}
+                borderWidth={this.props.style.borderWidth || 0}
+            />
+        );
+    }
+}
 
 export class ProgressBar extends BaseComponent {
     static propTypes = {
@@ -180,22 +200,4 @@ export class ProgressBar extends BaseComponent {
     }
 }
 
-/**
- * 自定义 Bar
- *
- */
-export class BarLine extends BaseComponent {
-    render() {
-        return (
-            <ProgressBar
-                {...this.props}
-                progress={this.props.progress}
-                width={this.props.style.width || 100}
-                height={this.props.style.height || 1}
-                unfilledColor={this.props.style.unfilledColor}
-                color={this.props.style.color}
-                borderWidth={this.props.style.borderWidth || 0}
-            />
-        );
-    }
-}
+

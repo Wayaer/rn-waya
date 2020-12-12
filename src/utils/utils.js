@@ -1,8 +1,8 @@
 'use strict';
-import {Date, FontSize, ModalIndicator, Overlay, React, Toast} from '../../index';
+import {DateTimePicker, FontSize, CustomButton, CenterView} from '../../index';
+import {ModalIndicator, Overlay, Toast} from 'teaset';
 import {BackHandler, DeviceEventEmitter, Dimensions, FlatList, Platform, ToastAndroid} from 'react-native';
-
-import {CenterView, CustomButton} from '../component/base/component';
+import React from "react";
 
 const {height, width, scale} = Dimensions.get('window');
 const alertStyle = {height: height, width: width};
@@ -302,7 +302,7 @@ export class UT {
      */
     static alertPicker(pickerValue, onSureCallback, onCancelCallback) {
         let pickerView = UT.alertPullView(
-            <Date
+            <DateTimePicker
                 pickerType={pickerValue.pickerType}
                 itemHeight={pickerValue.itemHeight}
                 cancelTextStyle={pickerValue.cancelTextStyle}

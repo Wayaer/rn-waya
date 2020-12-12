@@ -1,12 +1,11 @@
 import React, {PureComponent} from 'react';
 
-import {Animated} from 'react-native';
-import {TouchView} from './component';
-
 import {
-    Dimensions,
+    Animated, Dimensions,
     PixelRatio,
 } from 'react-native';
+import {TouchView} from './../../../index';
+
 
 export class BaseComponent extends PureComponent {
 
