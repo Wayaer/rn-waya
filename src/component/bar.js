@@ -1,7 +1,7 @@
 'use strict';
 import PropTypes from 'prop-types';
 import {Animated, Easing, View} from 'react-native';
-import {BaseComponent} from './base/BaseComponent';
+import {BaseComponent} from 'index';
 import React from 'react';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;

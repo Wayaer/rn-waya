@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {BaseDialog} from '../base/BaseDialog';
-import {KeyboardSpacer} from '../KeyboardSpacer';
+import {BaseDialog, KeyBoardSpacer} from 'index';
 
 export class InputDialog extends BaseDialog {
 
@@ -109,7 +108,7 @@ export class InputDialog extends BaseDialog {
                     }}>{this.props.btnText}</Text>
                 </TouchableOpacity>
             </View>
-            <KeyboardSpacer/>
+            <KeyBoardSpacer/>
         </View>;
     }
 

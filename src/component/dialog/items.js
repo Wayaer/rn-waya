@@ -1,6 +1,6 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {BaseDialog} from '../base/BaseDialog';
+import {BaseDialog} from '../base/base';
 
 export class SimpleItemsDialog extends BaseDialog {
 

@@ -1,22 +1,22 @@
 'use strict';
-import {DatePicker, FontSize, ModalIndicator, Overlay, React, Toast} from '../../index';
+import {Date, FontSize, ModalIndicator, Overlay, React, Toast} from '../../index';
 import {BackHandler, DeviceEventEmitter, Dimensions, FlatList, Platform, ToastAndroid} from 'react-native';
 
-import {CenterView, CustomButton} from '../component/Component';
+import {CenterView, CustomButton} from '../component/base/component';
 
 const {height, width, scale} = Dimensions.get('window');
 const alertStyle = {height: height, width: width};
 const defaultDuration = 1500;
 const defaultPosition = 'center';
 
-export class Utils {
+export class UT {
 
     /**
      * log信息打印
      * @param content
      */
     static log(content) {
-        if (!content) return Utils.logError('content');
+        if (!content) return UT.logError('content');
         console.warn('LogInfo=> ', content);
     }
 
@@ -147,7 +147,7 @@ export class Utils {
      * @returns {number}
      */
     static getHeight(h) {
-        return (h / 1334) * Utils.phoneFitHeight();
+        return (h / 1334) * UT.phoneFitHeight();
     }
 
     /**
@@ -263,7 +263,7 @@ export class Utils {
     }
 
     static pullListView(stringList, titleText, cancelText, callback) {
-        let listView = Utils.alertPullView(<CenterView>
+        let listView = UT.alertPullView(<CenterView>
             <CustomButton textStyle={{
                 margin: 20,
                 fontSize: FontSize.textSize_16
@@ -274,7 +274,7 @@ export class Utils {
 
                 renderItem={({item, index}) => (
                     <CustomButton textStyle={{
-                        margin: Utils.getWidth(25)
+                        margin: UT.getWidth(25)
                     }} onPress={() => {
                         Overlay.hide(listView);
                         return callback && callback(index)
@@ -301,8 +301,8 @@ export class Utils {
      * @param onCancelCallback
      */
     static alertPicker(pickerValue, onSureCallback, onCancelCallback) {
-        let pickerView = Utils.alertPullView(
-            <DatePicker
+        let pickerView = UT.alertPullView(
+            <Date
                 pickerType={pickerValue.pickerType}
                 itemHeight={pickerValue.itemHeight}
                 cancelTextStyle={pickerValue.cancelTextStyle}

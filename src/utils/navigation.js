@@ -1,6 +1,6 @@
 import {NavigationActions, StackActions} from 'react-navigation';
 
-export class NavigationTools {
+export class NT {
 
     /**
      * 屏幕聚焦

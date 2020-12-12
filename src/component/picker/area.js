@@ -1,8 +1,8 @@
 import React from 'react';
 import {Animated, Text, View} from 'react-native';
-import {PickerView} from './PickerView';
-import {BaseDialog} from '../base/BaseDialog';
-import {TouchView} from '../Component';
+import {PickerView} from '../base/picker';
+import {BaseDialog} from '../base/base';
+import {TouchView} from '../base/component';
 
 export class AreaPicker extends BaseDialog {
 

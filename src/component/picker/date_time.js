@@ -1,9 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {PickerView} from './PickerView';
-import {BaseDialog} from '../base/BaseDialog';
-import {Utils} from '../../utils/Utils';
-import {TouchView} from '../Component';
+import {UT, TouchView, PickerView, BaseDialog} from 'index';
 
 
 export class DateTimePicker extends BaseDialog {
@@ -66,7 +63,7 @@ export class DateTimePicker extends BaseDialog {
         }
         selectedMonth = selectedMonth.substr(0, selectedMonth.length - unit[1].length);
 
-        let dayCount = Utils.getDaysInOneMonth(selectedYear, selectedMonth);
+        let dayCount = UT.getDaysInOneMonth(selectedYear, selectedMonth);
         for (let i = 1; i <= dayCount; i++) {
             days.push(i + unit[2]);
         }
@@ -140,7 +137,7 @@ export class DateTimePicker extends BaseDialog {
     renderPicker() {
         return this.state.pickerData.map((item, pickerId) => {
             if (item) {
-                return <PickerView
+                return <Picker
                     key={'picker' + pickerId}
                     itemTextColor={this.props.itemTextColor}
                     itemSelectedColor={this.props.itemSelectedColor}

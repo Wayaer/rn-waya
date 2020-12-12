@@ -1,9 +1,19 @@
 'use strict';
-import {Image, ImageBackground, Animated, Text, TouchableOpacity, View} from 'react-native';
-import {Constant} from '../constant/Constant';
-import {Utils} from '../utils/Utils';
-import {BaseComponent} from './base/BaseComponent';
+import {
+    Image,
+    ImageBackground,
+    Animated,
+    Text,
+    TouchableOpacity,
+    View,
+    StyleSheet,
+    Easing,
+    LayoutAnimation, Platform, Keyboard, Dimensions
+} from 'react-native';
+import {UT, BaseComponent, Constant} from 'index';
 import React from 'react';
+import PropTypes from "prop-types";
+
 
 /**
  * 自定义 点击按钮
@@ -168,13 +178,13 @@ export class CustomCheckbox extends BaseComponent {
                     });
                 }}>
                 <CustomImage
-                    require={this.state.checked ? (this.checkedIcon || require('../res/icons/checkbox_true.png')) : (this.uncheckedIcon || require('../res/icons/checkbox_false.png'))}
+                    require={this.state.checked ? (this.checkedIcon || require('../../res/icons/checkbox_true.png')) : (this.uncheckedIcon || require('../../res/icons/checkbox_false.png'))}
                     style={[{
-                        width: Utils.getWidth(30),
-                        height: Utils.getWidth(30),
+                        width: UT.getWidth(30),
+                        height: UT.getWidth(30),
                     }, this.props.imageStyle]}/>
                 <Text style={[{
-                    marginLeft: Utils.getWidth(10),
+                    marginLeft: UT.getWidth(10),
                     color: Constant.mainBlack,
                 }, this.props.titleStyle]}>{this.props.title}</Text>
             </TouchView>
@@ -196,8 +206,8 @@ export class TabBarItem extends BaseComponent {
                     {...this.props}
                     source={this.props.imageSource}
                     style={[{
-                        width: Utils.getWidth(23),
-                        height: Utils.getWidth(23),
+                        width: UT.getWidth(23),
+                        height: UT.getWidth(23),
                     }, this.props.imageStyle]}/>
                 <CustomButton
                     {...this.props}
@@ -280,5 +290,196 @@ export class ToastComponent extends BaseComponent {
         } else {
             return null;
         }
+    }
+}
+
+/**
+ * 图片懒加载
+ */
+export class LazyImage extends BaseComponent {
+    static propTypes = {
+        /**
+         * Image source
+         */
+        source: PropTypes.any,
+        /**
+         * Custom placeholder component
+         */
+        customPlaceholder: PropTypes.node,
+        /**
+         * Placeholder background color, if it is not provided,
+         * it will fallback to `#e3e3e3`
+         */
+        placeholderColor: PropTypes.string,
+    };
+
+    static defaultProps = {
+        customPlaceholder: null,
+        placeholderColor: '#e3e3e3',
+    };
+
+    state = {
+        isLoading: true,
+        opacityStartValue: new Animated.Value(0),
+    };
+
+    handleLoadedImage = () => {
+        const {opacityStartValue} = this.state;
+
+        this.setState(
+            {
+                isLoading: false,
+                opacityStartValue: new Animated.Value(0),
+            },
+            () => opacityStartValue.stopAnimation(),
+        );
+    };
+
+    runAnimation = () => {
+        const {opacityStartValue} = this.state;
+
+        Animated.loop(
+            Animated.timing(opacityStartValue, {
+                toValue: 1,
+                duration: 1200,
+                easing: Easing.linear,
+                useNativeDriver: true,
+            }),
+        ).start();
+    };
+
+    render() {
+        const {source, customPlaceholder, placeholderColor, ...rest} = this.props;
+        const {opacityStartValue, isLoading} = this.state;
+
+        return (
+            <Animated.View
+                style={{
+                    position: 'relative',
+                    opacity: opacityStartValue.interpolate({
+                        inputRange: [0, 0.5, 1],
+                        outputRange: [1, 0.5, 1],
+                    }),
+                }}
+            >
+                {isLoading && (
+                    <View style={{
+                        ...StyleSheet.absoluteFill,
+                        zIndex: 2,
+                    }}>
+                        {customPlaceholder ||
+                        <View style={{
+                            width: '100%',
+                            height: '100%', backgroundColor: placeholderColor || '#e3e3e3'
+                        }}/>
+                        }
+                    </View>
+                )}
+                <Image
+                    source={typeof source === 'string' ? {uri: source} : source}
+                    onLoadStart={this.runAnimation}
+                    onLoadEnd={this.handleLoadedImage}
+                    {...rest}
+                />
+            </Animated.View>
+        );
+    }
+}
+
+const defaultAnimation = {
+    duration: 500,
+    create: {
+        duration: 300,
+        type: LayoutAnimation.Types.easeInEaseOut,
+        property: LayoutAnimation.Properties.opacity,
+    },
+    update: {
+        type: LayoutAnimation.Types.spring,
+        springDamping: 200,
+    },
+};
+
+export class KeyBoardSpacer extends BaseComponent {
+
+    static defaultProps = {
+        topSpacing: 0,
+        onToggle: () => null,
+    };
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            keyboardSpace: 0,
+            isKeyboardOpened: false,
+        };
+        this._listeners = null;
+        this.updateKeyboardSpace = this.updateKeyboardSpace.bind(this);
+        this.resetKeyboardSpace = this.resetKeyboardSpace.bind(this);
+    }
+
+    componentDidMount() {
+        const updateListener = Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow';
+        const resetListener = Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide';
+        this._listeners = [
+            Keyboard.addListener(updateListener, this.updateKeyboardSpace),
+            Keyboard.addListener(resetListener, this.resetKeyboardSpace),
+        ];
+    }
+
+    componentWillUnmount() {
+        this._listeners.forEach(listener => listener.remove());
+    }
+
+    updateKeyboardSpace(event) {
+        if (!event.endCoordinates) {
+            return;
+        }
+
+        let animationConfig = defaultAnimation;
+        if (Platform.OS === 'ios') {
+            animationConfig = LayoutAnimation.create(
+                event.duration,
+                LayoutAnimation.Types[event.easing],
+                LayoutAnimation.Properties.opacity,
+            );
+        }
+        LayoutAnimation.configureNext(animationConfig);
+
+        // get updated on rotation
+        const screenHeight = Dimensions.get('window').height;
+        // when external physical keyboard is connected
+        // event.endCoordinates.height still equals virtual keyboard height
+        // however only the keyboard toolbar is showing if there should be one
+        const keyboardSpace = (screenHeight - event.endCoordinates.screenY) + this.props.topSpacing;
+        this.setState({
+            keyboardSpace,
+            isKeyboardOpened: true,
+        }, this.props.onToggle(true, keyboardSpace));
+    }
+
+    resetKeyboardSpace(event) {
+        let animationConfig = defaultAnimation;
+        if (Platform.OS === 'ios') {
+            animationConfig = LayoutAnimation.create(
+                event.duration,
+                LayoutAnimation.Types[event.easing],
+                LayoutAnimation.Properties.opacity,
+            );
+        }
+        LayoutAnimation.configureNext(animationConfig);
+
+        this.setState({
+            keyboardSpace: 0,
+            isKeyboardOpened: false,
+        }, this.props.onToggle(false, 0));
+    }
+
+    render() {
+        return (
+            <View style={[{
+                left: 0,
+                right: 0,
+                bottom: 0, height: this.state.keyboardSpace
+            }, this.props.style]}/>);
     }
 }

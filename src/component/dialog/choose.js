@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-
-import {BaseDialog} from '../base/BaseDialog';
+import {BaseDialog} from '../base/base';
 
 /**
  * 用于不跳转页面的选择

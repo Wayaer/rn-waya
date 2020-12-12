@@ -1,9 +1,7 @@
 'use strict';
 import {Wheel} from 'teaset';
-import {CenterView, CustomButton, TouchView} from '../Component';
-import {Colors, Constant, FontSize} from '../../constant/Constant';
-import {Utils} from '../../utils/Utils';
-import {BaseComponent} from '../base/BaseComponent';
+import {Colors, Constant, FontSize} from '../../constant/constant';
+import {UT, BaseComponent, CenterView, CustomButton, TouchView} from 'index';
 import React from 'react';
 
 export class DatePicker extends BaseComponent {
@@ -16,7 +14,7 @@ export class DatePicker extends BaseComponent {
 
     constructor(props) {
         super(props);
-        this.itemHeight = props.itemHeight || Utils.getHeight(35);
+        this.itemHeight = props.itemHeight || UT.getHeight(35);
         this.pickerType = this.returnPickerType(props);
         this.title = props.title || 'Select';
         this.cancelText = props.cancelText || 'cancel';
@@ -167,11 +165,11 @@ export class DatePicker extends BaseComponent {
         return ['2019-01-01 00:00:00', '2020-01-01 00:00:00'];
     };
     checkDate = (dateTime) => {
-        if (!(Utils.regularStr(/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/, dateTime) ||
-            Utils.regularStr(/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/, dateTime))) {
+        if (!(UT.regularStr(/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/, dateTime) ||
+            UT.regularStr(/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/, dateTime))) {
             return console.error('日期格式错误 正确格式 2019-01-01 00:00:00 或 2019-01-01');
         }
-        return Utils.checkLegalDate(dateTime.split(' ')[0]) && dateTime;
+        return UT.checkLegalDate(dateTime.split(' ')[0]) && dateTime;
     };
 
     returnSelect = () => {
@@ -216,7 +214,7 @@ export class DatePicker extends BaseComponent {
 
 
     renderWheel = (pickerType) => {
-        const width = (Constant.Screen_Width - Utils.getWidth(26)) / (this.pickerType === 'dateTime' ? 8 : 5);
+        const width = (Constant.Screen_Width - UT.getWidth(26)) / (this.pickerType === 'dateTime' ? 8 : 5);
         const showDateView = (pickerType === 'date' || pickerType === 'dateTime');
         const showTimeView = (pickerType === 'time' || pickerType === 'dateTime');
 
@@ -259,10 +257,10 @@ export class DatePicker extends BaseComponent {
                 width: Constant.Screen_Width,
             }}>
                 <TouchView style={{
-                    paddingVertical: Utils.getHeight(8),
+                    paddingVertical: UT.getHeight(8),
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginHorizontal: Utils.getWidth(10),
+                    marginHorizontal: UT.getWidth(10),
                     alignItems: 'center',
                 }}>
                     <CustomButton
@@ -288,7 +286,7 @@ export class DatePicker extends BaseComponent {
                 <CenterView style={{
                     height: this.itemHeight * 6,
                     borderTopWidth: 1,
-                    paddingTop: Utils.getHeight(10),
+                    paddingTop: UT.getHeight(10),
                     borderColor: Colors.black30,
                 }}>
                     {this.renderWheel(this.pickerType)}

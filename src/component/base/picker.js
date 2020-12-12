@@ -1,9 +1,6 @@
 import React from 'react';
-
 import {Animated, PanResponder, View} from 'react-native';
-
-import {BaseComponent} from '../base/BaseComponent';
-
+import {BaseComponent} from './base';
 import Svg, {LinearGradient, Rect, Stop} from 'react-native-svg';
 
 export class PickerView extends BaseComponent {

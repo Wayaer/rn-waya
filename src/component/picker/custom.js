@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
-import {BaseDialog} from '../base/BaseDialog';
-import {PickerView} from './PickerView';
+import {BaseDialog} from '../base/base';
+import {PickerView} from '../base/picker';
 
 export class CustomPicker extends BaseDialog {
 
