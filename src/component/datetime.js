@@ -1,12 +1,12 @@
 'use strict';
 import React, {Component} from 'react';
 import {Wheel} from 'teaset';
-import {CenterView, CustomButton, TouchView} from './custom';
+import {CenterView, SimpleButton, TouchView} from './custom';
 import {Colors, Constant, FontSize} from '../constant/constant';
 import {UT} from '../utils/utils';
 
 
-export class DatePicker extends Component {
+export class DateTimePicker extends Component {
     /*
      * pickerType:
      *       date        =>年月日选择
@@ -249,7 +249,7 @@ export class DatePicker extends Component {
 
     };
     renderTextItem = (text) => {
-        return (<CustomButton buttonStyle={this.textViewStyle} textStyle={this.textStyle}>{text}</CustomButton>);
+        return (<SimpleButton buttonStyle={this.textViewStyle} textStyle={this.textStyle}>{text}</SimpleButton>);
     };
 
     render() {
@@ -265,7 +265,7 @@ export class DatePicker extends Component {
                     marginHorizontal: UT.getWidth(10),
                     alignItems: 'center',
                 }}>
-                    <CustomButton
+                    <SimpleButton
                         textStyle={[{color: '#000'}, this.cancelTextStyle]}
                         bottonStyle={[{padding: 2}, this.cancelTouchStyle]}
                         onPress={() => {
@@ -274,13 +274,13 @@ export class DatePicker extends Component {
                             }
                         }}>
                         {this.cancelText}
-                    </CustomButton>
-                    <CustomButton textStyle={[{
+                    </SimpleButton>
+                    <SimpleButton textStyle={[{
                         padding: 10,
                         color: '#000',
                         fontSize: FontSize.textSize_16,
-                    }, this.titleTextStyle]}>{this.title}</CustomButton>
-                    <CustomButton
+                    }, this.titleTextStyle]}>{this.title}</SimpleButton>
+                    <SimpleButton
                         textStyle={[{color: '#000'}, this.sureTextStyle]}
                         bottonStyle={[{padding: 2}, this.sureTouchStyle]}
                         onPress={() => {
@@ -289,7 +289,7 @@ export class DatePicker extends Component {
                             }
                         }}>
                         {this.sureText}
-                    </CustomButton>
+                    </SimpleButton>
                 </TouchView>
                 <CenterView style={{
                     height: this.itemHeight * 6,

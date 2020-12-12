@@ -4,7 +4,7 @@ import {BackHandler, DeviceEventEmitter, Dimensions, FlatList, Platform, ToastAn
 import React from 'react';
 import {SimpleButton, CenterView} from '../component/custom';
 import {FontSize} from '../constant/constant';
-import {DatePicker} from '../component/date';
+import {DateTimePicker} from '../component/datetime';
 
 const {height, width, scale} = Dimensions.get('window');
 const alertStyle = {height: height, width: width};
@@ -304,9 +304,9 @@ export class UT {
      * @param onSureCallback
      * @param onCancelCallback
      */
-    static alertDatePicker(pickerValue, onSureCallback, onCancelCallback) {
+    static alertDateTimePicker(pickerValue, onSureCallback, onCancelCallback) {
         let pickerView = UT.alertPullView(
-            <DatePicker
+            <DateTimePicker
                 pickerType={pickerValue.pickerType}
                 itemHeight={pickerValue.itemHeight}
                 cancelTextStyle={pickerValue.cancelTextStyle}
