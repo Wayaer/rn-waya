@@ -1,8 +1,10 @@
 'use strict';
-import {DateTimePicker, FontSize, CustomButton, CenterView} from '../../index';
 import {ModalIndicator, Overlay, Toast} from 'teaset';
 import {BackHandler, DeviceEventEmitter, Dimensions, FlatList, Platform, ToastAndroid} from 'react-native';
-import React from "react";
+import React from 'react';
+import {SimpleButton, CenterView} from '../component/custom';
+import {FontSize} from '../constant/constant';
+import {DatePicker} from '../component/date';
 
 const {height, width, scale} = Dimensions.get('window');
 const alertStyle = {height: height, width: width};
@@ -16,7 +18,9 @@ export class UT {
      * @param content
      */
     static log(content) {
-        if (!content) return UT.logError('content');
+        if (!content) {
+            return this.logError('content');
+        }
         console.warn('LogInfo=> ', content);
     }
 
@@ -264,34 +268,34 @@ export class UT {
 
     static pullListView(stringList, titleText, cancelText, callback) {
         let listView = UT.alertPullView(<CenterView>
-            <CustomButton textStyle={{
+            <SimpleButton textStyle={{
                 margin: 20,
-                fontSize: FontSize.textSize_16
-            }}>{titleText}</CustomButton>
+                fontSize: FontSize.textSize_16,
+            }}>{titleText}</SimpleButton>
             <FlatList
                 keyExtractor={(item, index) => (index + '1')}
                 data={this.state.item}
 
                 renderItem={({item, index}) => (
-                    <CustomButton textStyle={{
-                        margin: UT.getWidth(25)
+                    <SimpleButton textStyle={{
+                        margin: UT.getWidth(25),
                     }} onPress={() => {
                         Overlay.hide(listView);
-                        return callback && callback(index)
-                    }}>{item}</CustomButton>
+                        return callback && callback(index);
+                    }}>{item}</SimpleButton>
 
                 )}
             />
-            <CustomButton
+            <SimpleButton
                 textStyle={{
                     margin: 20,
                 }}
                 onPress={() => {
                     Overlay.hide(listView);
-                    return callback && callback('cancel')
+                    return callback && callback('cancel');
                 }}
-            >{cancelText}</CustomButton>
-        </CenterView>)
+            >{cancelText}</SimpleButton>
+        </CenterView>);
     }
 
     /**
@@ -300,9 +304,9 @@ export class UT {
      * @param onSureCallback
      * @param onCancelCallback
      */
-    static alertPicker(pickerValue, onSureCallback, onCancelCallback) {
+    static alertDatePicker(pickerValue, onSureCallback, onCancelCallback) {
         let pickerView = UT.alertPullView(
-            <DateTimePicker
+            <DatePicker
                 pickerType={pickerValue.pickerType}
                 itemHeight={pickerValue.itemHeight}
                 cancelTextStyle={pickerValue.cancelTextStyle}

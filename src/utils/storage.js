@@ -1,5 +1,5 @@
 'use strict';
-import {AsyncStorage} from '../../index';
+import {AsyncStorage} from 'react-native';
 
 let storage;
 

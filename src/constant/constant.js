@@ -65,41 +65,6 @@ export const Colors = {
     gray153153: '#999999',
 };
 
-export class Fit {
-    /*
-     * 全面屏适配
-     * */
-    static phoneFit() {
-        const y = scale * height;
-        if (Platform.OS === 'android') {
-            if (y < 1300) { //720p以下手机
-                return false;
-            } else if (y > 1300 && y < 1650) {//720p 18:9
-                return true;
-            } else if (y > 1700 && y < 1930) {//1080p 16:9
-                return false;
-            } else if (y > 1930 && y < 2400) {//1080p 18:9 19.5:9
-                return true;
-            } else if (y > 2400 && y < 2560) {//2k 16:9
-                return false;
-            } else {
-                return y > 2560 && y < 3300;
-            }
-        } else if (Platform.OS === 'ios') {
-            if (y < 1400) {//4.7寸 16:9
-                return false;
-            } else if (y > 1400 && y < 1850) {//iphone xr 18:9
-                return true;
-            } else if (y > 1850 && y < 2300) {//iphone plus 16:9
-                return false;
-            } else if (y > 2300) {//iphone x  18:9
-                return true;
-            }
-        }
-    }
-
-}
-
 
 export const Constant = {
 

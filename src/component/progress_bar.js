@@ -1,8 +1,7 @@
 'use strict';
 import PropTypes from 'prop-types';
 import {Animated, Easing, View} from 'react-native';
-import {BaseComponent} from './../../index';
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 const INDETERMINATE_WIDTH_FACTOR = 0.3;
 const BAR_WIDTH_ZERO_POSITION =
@@ -12,7 +11,7 @@ const BAR_WIDTH_ZERO_POSITION =
  * 自定义 Bar
  *
  */
-export class BarLine extends BaseComponent {
+export class BarLine extends PureComponent {
     render() {
         return (
             <ProgressBar
@@ -28,7 +27,7 @@ export class BarLine extends BaseComponent {
     }
 }
 
-export class ProgressBar extends BaseComponent {
+export class ProgressBar extends PureComponent {
     static propTypes = {
         animated: PropTypes.bool,
         borderColor: PropTypes.string,

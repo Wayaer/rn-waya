@@ -8,17 +8,18 @@ import {
     View,
     StyleSheet,
     Easing,
-    LayoutAnimation, Platform, Keyboard, Dimensions
+    LayoutAnimation, Platform, Keyboard, Dimensions,
 } from 'react-native';
-import {UT, BaseComponent, Constant} from './../../../index';
-import React from 'react';
-import PropTypes from "prop-types";
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {UT} from '../utils/utils';
+import {Constant} from '../constant/constant';
 
 
 /**
  * 自定义 点击按钮
  */
-export class TouchView extends BaseComponent {
+export class TouchView extends PureComponent {
     constructor(props) {
         super(props);
         if (this.props.onPress) {
@@ -60,7 +61,7 @@ export class TouchView extends BaseComponent {
  *
  * style  //样式
  */
-export class CenterView extends BaseComponent {
+export class CenterView extends PureComponent {
     render() {
         return (<TouchView
                 {...this.props}
@@ -79,7 +80,7 @@ export class CenterView extends BaseComponent {
 /**
  * 自定义 Button
  */
-export class CustomButton extends BaseComponent {
+export class SimpleButton extends PureComponent {
     render() {
         return (
             <CenterView
@@ -100,7 +101,7 @@ export class CustomButton extends BaseComponent {
  * 自定义 Image
  *
  */
-export class CustomImage extends BaseComponent {
+export class CustomImage extends PureComponent {
     //resizeMode
     // cover 模式只求在显示比例不失真的情况下填充整个显示区域。可以对图片进行放大或者缩小，超出显示区域的部分不显示， 也就是说，图片可能部分会显示不了。
     // contain 模式是要求显示整张图片, 可以对它进行等比缩小, 图片会显示完整,可能会露出Image控件的底色。 如果图片宽高都小于控件宽高，则不会对图片进行放大。
@@ -135,7 +136,7 @@ export class CustomImage extends BaseComponent {
 /*
 * 自定义ImageBackground
 * */
-export class CustomImageBackground extends BaseComponent {
+export class CustomImageBackground extends PureComponent {
     render() {
         return (
             <ImageBackground
@@ -155,7 +156,7 @@ export class CustomImageBackground extends BaseComponent {
 /**
  * 自定义 Checkbox
  */
-export class CustomCheckbox extends BaseComponent {
+export class CustomCheckbox extends PureComponent {
     constructor(props) {
         super(props);
         this.onChange = props.onChange;
@@ -178,7 +179,7 @@ export class CustomCheckbox extends BaseComponent {
                     });
                 }}>
                 <CustomImage
-                    require={this.state.checked ? (this.checkedIcon || require('../../res/icons/checkbox_true.png')) : (this.uncheckedIcon || require('../../res/icons/checkbox_false.png'))}
+                    require={this.state.checked ? (this.checkedIcon || require('../res/icons/checkbox_true.png')) : (this.uncheckedIcon || require('../res/icons/checkbox_false.png'))}
                     style={[{
                         width: UT.getWidth(30),
                         height: UT.getWidth(30),
@@ -195,7 +196,7 @@ export class CustomCheckbox extends BaseComponent {
 /**
  * 自定义 TabBarItem
  */
-export class TabBarItem extends BaseComponent {
+export class TabBarItem extends PureComponent {
     render() {
         return (
             <TouchView
@@ -218,7 +219,7 @@ export class TabBarItem extends BaseComponent {
 }
 
 
-export class ToastComponent extends BaseComponent {
+export class ToastComponent extends PureComponent {
 
     static defaultProps = {
         duration: 1500,
@@ -229,7 +230,7 @@ export class ToastComponent extends BaseComponent {
         paddingV: 5,
         borderRadius: 5,
         backgroundColor: 0x00000099,
-    }
+    };
 
     opacity = new Animated.Value(0);
 
@@ -278,7 +279,7 @@ export class ToastComponent extends BaseComponent {
                         borderRadius: this.props.borderRadius,
                         backgroundColor: this.props.backgroundColor,
                         paddingLeft: this.props.paddingH, paddingRight: this.props.paddingH,
-                        paddingTop: this.props.paddingV, paddingBottom: this.props.paddingV
+                        paddingTop: this.props.paddingV, paddingBottom: this.props.paddingV,
                     }}>
                     <Text style={{
                         color: this.props.textColor,
@@ -296,7 +297,7 @@ export class ToastComponent extends BaseComponent {
 /**
  * 图片懒加载
  */
-export class LazyImage extends BaseComponent {
+export class LazyImage extends PureComponent {
     static propTypes = {
         /**
          * Image source
@@ -370,7 +371,7 @@ export class LazyImage extends BaseComponent {
                         {customPlaceholder ||
                         <View style={{
                             width: '100%',
-                            height: '100%', backgroundColor: placeholderColor || '#e3e3e3'
+                            height: '100%', backgroundColor: placeholderColor || '#e3e3e3',
                         }}/>
                         }
                     </View>
@@ -399,7 +400,7 @@ const defaultAnimation = {
     },
 };
 
-export class KeyBoardSpacer extends BaseComponent {
+export class KeyBoardSpacer extends PureComponent {
 
     static defaultProps = {
         topSpacing: 0,
@@ -479,7 +480,7 @@ export class KeyBoardSpacer extends BaseComponent {
             <View style={[{
                 left: 0,
                 right: 0,
-                bottom: 0, height: this.state.keyboardSpace
+                bottom: 0, height: this.state.keyboardSpace,
             }, this.props.style]}/>);
     }
 }

@@ -1,10 +1,12 @@
 'use strict';
-import React from 'react';
+import React, {Component} from 'react';
 import {Wheel} from 'teaset';
-import {UT, Colors, Constant, FontSize, BaseComponent, CenterView, CustomButton, TouchView} from './../../../index';
+import {CenterView, CustomButton, TouchView} from './custom';
+import {Colors, Constant, FontSize} from '../constant/constant';
+import {UT} from '../utils/utils';
 
 
-export class DatePicker extends BaseComponent {
+export class DatePicker extends Component {
     /*
      * pickerType:
      *       date        =>年月日选择
@@ -266,7 +268,11 @@ export class DatePicker extends BaseComponent {
                     <CustomButton
                         textStyle={[{color: '#000'}, this.cancelTextStyle]}
                         bottonStyle={[{padding: 2}, this.cancelTouchStyle]}
-                        onPress={this.onCancel}>
+                        onPress={() => {
+                            if (this.onCancel != null) {
+                                this.onCancel();
+                            }
+                        }}>
                         {this.cancelText}
                     </CustomButton>
                     <CustomButton textStyle={[{
@@ -278,7 +284,9 @@ export class DatePicker extends BaseComponent {
                         textStyle={[{color: '#000'}, this.sureTextStyle]}
                         bottonStyle={[{padding: 2}, this.sureTouchStyle]}
                         onPress={() => {
-                            this.props.onSure(this.returnSelect());
+                            if (this.onSure != null) {
+                                this.onSure(this.returnSelect());
+                            }
                         }}>
                         {this.sureText}
                     </CustomButton>
