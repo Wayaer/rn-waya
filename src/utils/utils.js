@@ -129,8 +129,14 @@ export class UT {
                 return 1334 / s;
             } else if (y > 1850 && y < 2300) {//iphone plus 16:9
                 return h;
-            } else if (y > 2300) {//iphone x  18:9
+            } else if (y > 2300 && y <= 2436) {//iphone x  phone 12 mini  18:9
                 return 2208 / s;
+            } else if (y > 2436 && y <= 2552) {//iphone 12 iphone 12 Pro  18:9
+                return 2340 / s;
+            } else if (y > 2552 && y < 2700) {//iphone 11  Pro Max  18:9
+                return 2454 / s;
+            } else if (y > 2700) {//iphone 12  Pro Max  18:9
+                return 2535 / s;
             }
         }
     }

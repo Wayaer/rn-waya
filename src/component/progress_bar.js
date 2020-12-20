@@ -8,8 +8,7 @@ const BAR_WIDTH_ZERO_POSITION =
     INDETERMINATE_WIDTH_FACTOR / (1 + INDETERMINATE_WIDTH_FACTOR);
 
 /**
- * 自定义 Bar
- *
+ * 例子
  */
 export class BarLine extends PureComponent {
     render() {
@@ -17,11 +16,11 @@ export class BarLine extends PureComponent {
             <ProgressBar
                 {...this.props}
                 progress={this.props.progress}
-                width={this.props.style.width || 100}
-                height={this.props.style.height || 1}
-                unfilledColor={this.props.style.unfilledColor}
-                color={this.props.style.color}
-                borderWidth={this.props.style.borderWidth || 0}
+                width={this.props.width || 100}
+                height={this.props.height || 1}
+                unfilledColor={this.props.unfilledColor || 'gray'}
+                color={this.props.color || 'blue'}
+                borderWidth={this.props.borderWidth || 0}
             />
         );
     }
