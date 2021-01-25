@@ -1,6 +1,6 @@
 {
   "name": "rn-waya",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "React Native rn-waya",
   "main": "index.js",
   "homepage": "https://github.com/Wayaer/rn-waya",
@@ -16,6 +16,7 @@
     "npmDeprecate": "npm deprecate rn-waya@0.0.1 Please update the version for rn-waya"
   },
   "dependencies": {
+    "react-native": "^0.63.4",
     "react-navigation": "^4.4.2",
     "teaset": "^0.7.5"
   },
