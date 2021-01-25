@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {UT} from '../utils/utils';
+import {Utils} from '../utils/utils';
 import {Constant} from '../constant/constant';
 
 
@@ -181,11 +181,11 @@ export class CustomCheckbox extends PureComponent {
                 <CustomImage
                     require={this.state.checked ? (this.checkedIcon || require('../res/icons/checkbox_true.png')) : (this.uncheckedIcon || require('../res/icons/checkbox_false.png'))}
                     style={[{
-                        width: UT.getWidth(30),
-                        height: UT.getWidth(30),
+                        width: Utils.getWidth(30),
+                        height: Utils.getWidth(30),
                     }, this.props.imageStyle]}/>
                 <Text style={[{
-                    marginLeft: UT.getWidth(10),
+                    marginLeft: Utils.getWidth(10),
                     color: Constant.mainBlack,
                 }, this.props.titleStyle]}>{this.props.title}</Text>
             </TouchView>
@@ -207,8 +207,8 @@ export class TabBarItem extends PureComponent {
                     {...this.props}
                     source={this.props.imageSource}
                     style={[{
-                        width: UT.getWidth(23),
-                        height: UT.getWidth(23),
+                        width: Utils.getWidth(23),
+                        height: Utils.getWidth(23),
                     }, this.props.imageStyle]}/>
                 <CustomButton
                     {...this.props}

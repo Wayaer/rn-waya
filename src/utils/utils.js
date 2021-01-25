@@ -11,7 +11,7 @@ const alertStyle = {height: height, width: width};
 const defaultDuration = 1500;
 const defaultPosition = 'center';
 
-export class UT {
+export class Utils {
 
     /**
      * log信息打印
@@ -157,7 +157,7 @@ export class UT {
      * @returns {number}
      */
     static getHeight(h) {
-        return (h / 1334) * UT.phoneFitHeight();
+        return (h / 1334) * Utils.phoneFitHeight();
     }
 
     /**
@@ -273,7 +273,7 @@ export class UT {
     }
 
     static pullListView(stringList, titleText, cancelText, callback) {
-        let listView = UT.alertPullView(<CenterView>
+        let listView = Utils.alertPullView(<CenterView>
             <SimpleButton textStyle={{
                 margin: 20,
                 fontSize: FontSize.textSize_16,
@@ -284,7 +284,7 @@ export class UT {
 
                 renderItem={({item, index}) => (
                     <SimpleButton textStyle={{
-                        margin: UT.getWidth(25),
+                        margin: Utils.getWidth(25),
                     }} onPress={() => {
                         Overlay.hide(listView);
                         return callback && callback(index);
@@ -311,7 +311,7 @@ export class UT {
      * @param onCancelCallback
      */
     static alertDateTimePicker(pickerValue, onSureCallback, onCancelCallback) {
-        let pickerView = UT.alertPullView(
+        let pickerView = Utils.alertPullView(
             <DateTimePicker
                 pickerType={pickerValue.pickerType}
                 itemHeight={pickerValue.itemHeight}

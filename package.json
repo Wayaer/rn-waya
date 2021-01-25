@@ -21,8 +21,7 @@
   },
   "devDependencies": {
     "prop-types": "^15.7.2",
-    "react": "16.13.1",
-    "react-native": "^0.63.3"
+    "react": "^17.0.1"
   },
   "prettier": {
     "requirePragma": true,
